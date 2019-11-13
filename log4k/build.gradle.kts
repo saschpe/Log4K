@@ -155,3 +155,16 @@ kotlin {
         }
     }
 }
+
+publishing {
+    repositories {
+        maven {
+            name = "bintray"
+            credentials {
+                username = Secrets.Bintray.username
+                password = Secrets.Bintray.password
+            }
+            url = uri("https://api.bintray.com/maven/saschpe/maven/log4k/;publish=1")
+        }
+    }
+}
