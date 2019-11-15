@@ -9,7 +9,7 @@ buildscript {
 }
 
 plugins {
-    id("com.diffplug.gradle.spotless") version "3.25.0"
+    id("com.diffplug.gradle.spotless") version "3.26.0"
     id("com.github.ben-manes.versions") version "0.27.0"
     kotlin("jvm") version "1.3.50"
 }
@@ -29,11 +29,11 @@ spotless {
     }
     kotlin {
         target("*/src/**/*.kt")
-        ktlint("0.35.0").userData(mapOf("disabled_rules" to "no-wildcard-imports"))
+        ktlint().userData(mapOf("disabled_rules" to "no-wildcard-imports"))
     }
     kotlinGradle {
         target("**/*.gradle.kts")
-        ktlint("0.35.0")
+        ktlint()
     }
 }
 
