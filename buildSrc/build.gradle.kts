@@ -20,7 +20,7 @@ tasks {
                 secretFile.writeText(
                     """
 object Secrets {
-    object Artifactory {
+    object Bintray {
         const val username = ""
         const val password = ""
     }
