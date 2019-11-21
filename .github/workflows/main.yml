@@ -36,6 +36,7 @@ jobs:
     env:
       SECRETS_KEY: ${{ secrets.SECRETS_KEY }}
     steps:
+      - uses: actions/checkout@v1
       - name: Download .gradle folder
         uses: actions/download-artifact@v1
         with:
