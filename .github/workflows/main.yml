@@ -49,7 +49,8 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: log4k_build
-      - shell: bash
+      - name: Publish to Bintray
+        shell: bash
         run: |
           ./scripts/secret decrypt --password ${SECRETS_KEY}
           ./scripts/publish
