@@ -1,7 +1,7 @@
 # Log4K
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
-[![Download](https://api.bintray.com/packages/saschpe/maven/log4k/images/download.svg)](https://bintray.com/saschpe/maven/log4k/0.1.2)
-[![Build Status](https://github.com/saschpe/log4k/workflows/.github/workflows/main.yml/badge.svg)](https://github.com/saschpe/log4k/actions)
+[![Download](https://api.bintray.com/packages/saschpe/maven/log4k/images/download.svg?version=0.1.2)](https://bintray.com/saschpe/maven/log4k/0.1.2/link)
+[![Build Status](https://github.com/saschpe/log4k/workflows/Main%20CI/badge.svg)](https://github.com/saschpe/log4k/actions)
 ![Kotlin Version](https://img.shields.io/badge/kotlin-v1.3.60-F88909?style=flat&logo=kotlin)
 
 Lightweight logging library for Kotlin/Multiplatform. Supports Android, iOS,
