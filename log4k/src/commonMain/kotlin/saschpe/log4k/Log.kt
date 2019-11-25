@@ -26,7 +26,7 @@ object Log {
     fun assert(message: String, throwable: Throwable? = null, tag: String = "") =
         log(Level.Assert, tag, throwable, message)
 
-    internal fun log(priority: Level, tag: String = "", throwable: Throwable? = null, message: String? = null) =
+    fun log(priority: Level, tag: String = "", throwable: Throwable? = null, message: String? = null) =
         loggers.forEach { it.log(priority, tag, message, throwable) }
 }
 
