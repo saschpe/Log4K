@@ -11,8 +11,9 @@ SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 . "${SCRIPT_DIR}/inc.functions.sh"
 
 # Constants
-GRADLE_FILES=(
+FILES=(
   log4k/build.gradle.kts
+  README.md
 )
 
 # Functions
@@ -38,20 +39,21 @@ version_name_new=$1
 # of six digits.
 IFS='.' read -r -a version_name_new_array <<<"${version_name_new}"
 
-for gradle_file in ${GRADLE_FILES[@]}; do
-  version_name_old=$(get_version_name ${gradle_file})
+version_name_old=$(get_version_name "${FILES[0]}")
+
+for file in ${FILES[@]}; do
   # To be able to compare with the previous version, do the same for the old
   # version name.
   IFS='.' read -r -a version_name_old_array <<<"${version_name_old}"
 
-  if version_gt ${version_name_old} ${version_name_new}; then
+  if version_gt "${version_name_old}" "${version_name_new}"; then
     die "Already at version ${version_name_old}"
   fi
 
-  # Since we're otherwise fine, start changing the version name..
-  sed2 "s|version = \"${version_name_old}|version = \"${version_name_new}|" ${gradle_file}
+  # Since we're otherwise fine, start changing the version name
+  sed2 "s|${version_name_old}|${version_name_new}|g" "${file}"
 
-  git_commit_files="${git_commit_files} ${gradle_file}"
+  git_commit_files="${git_commit_files} ${file}"
 done
 
 # Create a commit with appropriate tag
