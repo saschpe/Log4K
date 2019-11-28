@@ -13,7 +13,7 @@ JavaScript and plain JVM environments.
 
 # Download
 ```kotlin
-compile("saschpe.log4k:log4k:0.1.5")
+implementation("saschpe.log4k:log4k:0.1.5")
 ```
 
 # Usage
