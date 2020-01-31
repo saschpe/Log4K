@@ -11,7 +11,7 @@ repositories {
 }
 
 group = "saschpe.log4k"
-version = "0.1.5"
+version = "0.1.6"
 
 android {
     compileSdkVersion(29)
