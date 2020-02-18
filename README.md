@@ -11,12 +11,12 @@
 Lightweight logging library for Kotlin/Multiplatform. Supports Android, iOS,
 JavaScript and plain JVM environments.
 
-# Download
+## Download
 ```kotlin
 implementation("saschpe.log4k:log4k:0.1.6")
 ```
 
-# Usage
+## Usage
 Logging messages is straightforward, the **Log** object provides the usual
 functions you'd expect:
 
@@ -34,7 +34,7 @@ on all supported platforms:
 
     I/Application.onCreate: Log4K rocks!
 
-# Configuration (Android example)
+## Configuration (Android example)
 To only output messages with log-level *info* and above, you can configure the
 console logger in your Application class:
 
@@ -51,13 +51,47 @@ class MyApplication : Application() {
 }
 ```
 
+## Custom logger (Android Crashlytics example)
+The library provides a cross-platform `ConsoleLogger` by default. Custom
+loggers can easily be added. For instance, to send only `ERROR` and `ASSERT`
+messages to Crashlytics in production builds, you could do the following:
+
+```kotlin
+class MyApplication : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        Log.loggers += when {
+            BuildConfig.DEBUG -> ConsoleLogger()
+            else -> CrashlyticsLogger()
+        }
+    }
+
+    private class CrashlyticsLogger : Logger() {
+        override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) {
+            val priority = when (level) {
+                Log.Level.Verbose -> VERBOSE
+                Log.Level.Debug -> DEBUG
+                Log.Level.Info -> INFO
+                Log.Level.Warning -> WARN
+                Log.Level.Error -> ERROR
+                Log.Level.Assert -> ASSERT
+            }
+            if (priority >= ERROR) {
+                Crashlytics.log(priority, tag, message)
+                Crashlytics.logException(throwable)
+            }
+        }
+    }
+}
+```
+
 Snapshots of the development version are available in [Sonatype's `snapshots` repository][sonatype].
 
-# Users
- - [Alpha+ Player](https://play.google.com/store/apps/details?id=saschpe.alphaplus)
- - [GameOn](https://play.google.com/store/apps/details?id=saschpe.gameon)
+## Users
+ - [Alpha+ Player - Unofficial player for Soma FM](https://play.google.com/store/apps/details?id=saschpe.alphaplus)
+ - [GameOn - Get games on sale](https://play.google.com/store/apps/details?id=saschpe.gameon)
 
-# License
+## License
 
     Copyright 2019 Sascha Peilicke
 
