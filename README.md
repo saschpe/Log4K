@@ -77,8 +77,8 @@ class MyApplication : Application() {
                 Log.Level.Assert -> ASSERT
             }
             if (priority >= ERROR) {
-                Crashlytics.log(priority, tag, message)
-                Crashlytics.logException(throwable)
+                FirebaseCrashlytics.getInstance().log("$priority $tag $message")
+                throwable?.let { FirebaseCrashlytics.getInstance().recordException(it) }
             }
         }
     }
