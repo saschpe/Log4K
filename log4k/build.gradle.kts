@@ -69,8 +69,8 @@ kotlin {
             dependencies {
                 implementation(kotlin("test"))
                 implementation(kotlin("test-junit"))
-                implementation("androidx.test:core-ktx:1.2.0")
-                implementation("androidx.test.ext:junit-ktx:1.1.1")
+                implementation("androidx.test:core-ktx:1.3.0")
+                implementation("androidx.test.ext:junit-ktx:1.1.2")
                 implementation("io.mockk:mockk:1.10.2")
             }
         }
