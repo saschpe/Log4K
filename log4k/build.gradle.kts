@@ -14,11 +14,11 @@ group = "saschpe.log4k"
 version = "0.1.7"
 
 android {
-    compileSdkVersion(29)
+    compileSdkVersion(30)
 
     defaultConfig {
         minSdkVersion(17)
-        targetSdkVersion(29)
+        targetSdkVersion(30)
     }
 
     sourceSets {
