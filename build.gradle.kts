@@ -4,14 +4,14 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:3.6.3")
+        classpath("com.android.tools.build:gradle:4.0.2")
     }
 }
 
 plugins {
-    id("com.diffplug.gradle.spotless") version "4.3.0"
-    id("com.github.ben-manes.versions") version "0.28.0"
-    kotlin("jvm") version "1.3.72"
+    id("com.diffplug.spotless") version "5.7.0"
+    id("com.github.ben-manes.versions") version "0.33.0"
+    kotlin("jvm") version "1.4.10"
 }
 
 repositories {
@@ -20,11 +20,12 @@ repositories {
 
 spotless {
     format("misc") {
-        target("**/*.gradle", "**/*.md", "**/.gitignore")
+        target("**/*.gradle", "*.md", "**/.gitignore")
         trimTrailingWhitespace()
         endWithNewline()
     }
     freshmark {
+        target("*.md")
         propertiesFile("gradle.properties")
     }
     kotlin {

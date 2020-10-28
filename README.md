@@ -1,6 +1,6 @@
 # Log4K
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
-[![Download](https://api.bintray.com/packages/saschpe/maven/log4k/images/download.svg?version=0.1.7)](https://bintray.com/saschpe/maven/log4k/0.1.7/link)
+[![Download](https://api.bintray.com/packages/saschpe/maven/log4k/images/download.svg?version=1.0.0)](https://bintray.com/saschpe/maven/log4k/1.0.0/link)
 [![Build Status](https://github.com/saschpe/log4k/workflows/Main%20CI/badge.svg)](https://github.com/saschpe/log4k/actions)
 ![badge-android](http://img.shields.io/badge/platform-android-brightgreen.svg?style=flat)
 ![badge-native](http://img.shields.io/badge/platform-native-lightgrey.svg?style=flat)
@@ -13,7 +13,7 @@ JavaScript and plain JVM environments.
 
 ## Download
 ```kotlin
-implementation("saschpe.log4k:log4k:0.1.7")
+implementation("saschpe.log4k:log4k:1.0.0")
 ```
 
 ## Usage

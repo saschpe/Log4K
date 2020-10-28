@@ -11,14 +11,14 @@ repositories {
 }
 
 group = "saschpe.log4k"
-version = "0.1.7"
+version = "1.0.0"
 
 android {
-    compileSdkVersion(29)
+    compileSdkVersion(30)
 
     defaultConfig {
         minSdkVersion(17)
-        targetSdkVersion(29)
+        targetSdkVersion(30)
     }
 
     sourceSets {
@@ -45,6 +45,7 @@ kotlin {
     iosArm64 { binaries.framework("Log4K") }
     iosX64 { binaries.framework("Log4K") }
     js {
+        browser()
         compilations.all {
             kotlinOptions.sourceMap = true
             kotlinOptions.moduleKind = "umd"
@@ -53,37 +54,29 @@ kotlin {
     jvm { compilations.all { kotlinOptions.jvmTarget = "1.8" } }
 
     sourceSets {
-        named("commonMain") {
-            dependencies {
-                implementation(kotlin("stdlib-common"))
-            }
-        }
+        named("commonMain") { }
         named("commonTest") {
             dependencies {
                 implementation(kotlin("test-annotations-common"))
                 implementation(kotlin("test-common"))
-                implementation("io.mockk:mockk-common:1.10.0")
+                implementation("io.mockk:mockk-common:1.10.2")
             }
         }
 
         named("androidMain") {
-            dependencies {
-                implementation(kotlin("stdlib"))
-            }
         }
         named("androidTest") {
             dependencies {
                 implementation(kotlin("test"))
                 implementation(kotlin("test-junit"))
-                implementation("androidx.test:core-ktx:1.2.0")
-                implementation("androidx.test.ext:junit-ktx:1.1.1")
-                implementation("io.mockk:mockk:1.10.0")
+                implementation("androidx.test:core-ktx:1.3.0")
+                implementation("androidx.test.ext:junit-ktx:1.1.2")
+                implementation("io.mockk:mockk:1.10.2")
             }
         }
 
         val iosMain by creating {
-            dependencies {
-            }
+            dependencies { }
         }
         val iosTest by creating {
             dependencies {
@@ -95,29 +88,21 @@ kotlin {
         getByName("iosX64Main") { dependsOn(iosMain) }
         getByName("iosX64Test") { dependsOn(iosTest) }
 
-        named("jsMain") {
-            dependencies {
-                implementation(kotlin("stdlib-js"))
-            }
-        }
+        named("jsMain") { }
         // Note: mockk is not available for JavaScript
         named("jsTest") {
             dependencies {
                 implementation(kotlin("test-js"))
-                implementation("io.mockk:mockk-dsl-js:1.10.0")
+                implementation("io.mockk:mockk-dsl-js:1.10.2")
             }
         }
 
-        named("jvmMain") {
-            dependencies {
-                implementation(kotlin("stdlib"))
-            }
-        }
+        named("jvmMain") { }
         named("jvmTest") {
             dependencies {
                 implementation(kotlin("test"))
                 implementation(kotlin("test-junit"))
-                implementation("io.mockk:mockk:1.10.0")
+                implementation("io.mockk:mockk:1.10.2")
             }
         }
     }
