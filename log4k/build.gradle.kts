@@ -45,6 +45,7 @@ kotlin {
     iosArm64 { binaries.framework("Log4K") }
     iosX64 { binaries.framework("Log4K") }
     js {
+        browser()
         compilations.all {
             kotlinOptions.sourceMap = true
             kotlinOptions.moduleKind = "umd"
@@ -53,11 +54,7 @@ kotlin {
     jvm { compilations.all { kotlinOptions.jvmTarget = "1.8" } }
 
     sourceSets {
-        named("commonMain") {
-            dependencies {
-                implementation(kotlin("stdlib-common"))
-            }
-        }
+        named("commonMain") { }
         named("commonTest") {
             dependencies {
                 implementation(kotlin("test-annotations-common"))
@@ -67,9 +64,6 @@ kotlin {
         }
 
         named("androidMain") {
-            dependencies {
-                implementation(kotlin("stdlib"))
-            }
         }
         named("androidTest") {
             dependencies {
@@ -82,8 +76,7 @@ kotlin {
         }
 
         val iosMain by creating {
-            dependencies {
-            }
+            dependencies { }
         }
         val iosTest by creating {
             dependencies {
@@ -95,11 +88,7 @@ kotlin {
         getByName("iosX64Main") { dependsOn(iosMain) }
         getByName("iosX64Test") { dependsOn(iosTest) }
 
-        named("jsMain") {
-            dependencies {
-                implementation(kotlin("stdlib-js"))
-            }
-        }
+        named("jsMain") { }
         // Note: mockk is not available for JavaScript
         named("jsTest") {
             dependencies {
@@ -108,11 +97,7 @@ kotlin {
             }
         }
 
-        named("jvmMain") {
-            dependencies {
-                implementation(kotlin("stdlib"))
-            }
-        }
+        named("jvmMain") { }
         named("jvmTest") {
             dependencies {
                 implementation(kotlin("test"))
