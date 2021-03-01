@@ -59,7 +59,7 @@ kotlin {
             dependencies {
                 implementation(kotlin("test-annotations-common"))
                 implementation(kotlin("test-common"))
-                implementation("io.mockk:mockk-common:1.10.2")
+                implementation("io.mockk:mockk-common:1.10.6")
             }
         }
 
@@ -71,7 +71,7 @@ kotlin {
                 implementation(kotlin("test-junit"))
                 implementation("androidx.test:core-ktx:1.3.0")
                 implementation("androidx.test.ext:junit-ktx:1.1.2")
-                implementation("io.mockk:mockk:1.10.2")
+                implementation("io.mockk:mockk:1.10.6")
             }
         }
 
@@ -93,7 +93,7 @@ kotlin {
         named("jsTest") {
             dependencies {
                 implementation(kotlin("test-js"))
-                implementation("io.mockk:mockk-dsl-js:1.10.2")
+                implementation("io.mockk:mockk-dsl-js:1.10.6")
             }
         }
 
@@ -102,7 +102,7 @@ kotlin {
             dependencies {
                 implementation(kotlin("test"))
                 implementation(kotlin("test-junit"))
-                implementation("io.mockk:mockk:1.10.2")
+                implementation("io.mockk:mockk:1.10.6")
             }
         }
     }
