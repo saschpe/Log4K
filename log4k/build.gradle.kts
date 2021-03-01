@@ -6,8 +6,12 @@ plugins {
 
 repositories {
     google()
-    jcenter()
     mavenCentral()
+    jcenter {
+        content {
+            includeModule("org.jetbrains.trove4j", "trove4j") // https://youtrack.jetbrains.com/issue/IDEA-261387
+        }
+    }
 }
 
 group = "saschpe.log4k"
