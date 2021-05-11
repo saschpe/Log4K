@@ -4,14 +4,14 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:4.0.2")
+        classpath("com.android.tools.build:gradle:4.1.1")
     }
 }
 
 plugins {
-    id("com.diffplug.spotless") version "5.7.0"
-    id("com.github.ben-manes.versions") version "0.33.0"
-    kotlin("jvm") version "1.4.31"
+    id("com.diffplug.spotless") version "5.12.4"
+    id("com.github.ben-manes.versions") version "0.38.0"
+    kotlin("jvm") version "1.5.0"
 }
 
 repositories {
@@ -41,7 +41,6 @@ spotless {
 tasks.withType<com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask> {
     rejectVersionIf {
         fun isStable(version: String) = Regex("^[0-9,.v-]+(-r)?$").matches(version)
-
         !isStable(candidate.version) && isStable(currentVersion)
     }
 }

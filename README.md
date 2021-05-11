@@ -1,6 +1,6 @@
 # Log4K
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
-[![Download](https://api.bintray.com/packages/saschpe/maven/log4k/images/download.svg?version=1.0.0)](https://bintray.com/saschpe/maven/log4k/1.0.0/link)
+![Maven Central](https://img.shields.io/maven-central/v/de.peilicke.sascha/log4k)
 [![Build Status](https://github.com/saschpe/log4k/workflows/Main%20CI/badge.svg)](https://github.com/saschpe/log4k/actions)
 ![badge-android](http://img.shields.io/badge/platform-android-brightgreen.svg?style=flat)
 ![badge-native](http://img.shields.io/badge/platform-native-lightgrey.svg?style=flat)
@@ -12,8 +12,15 @@ Lightweight logging library for Kotlin/Multiplatform. Supports Android, iOS,
 JavaScript and plain JVM environments.
 
 ## Download
+Artifacts are published to [Maven Central][maven-central]:
 ```kotlin
-implementation("saschpe.log4k:log4k:1.0.0")
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("de.peilicke.sascha:log4k:1.0.1")
+}
 ```
 
 ## Usage
@@ -85,8 +92,6 @@ class MyApplication : Application() {
 }
 ```
 
-Snapshots of the development version are available in [Sonatype's `snapshots` repository][sonatype].
-
 ## Users
 - [Alpha+ Player - Unofficial player for Soma FM](https://play.google.com/store/apps/details?id=saschpe.alphaplus)
 - [GameOn - Get games on sale](https://play.google.com/store/apps/details?id=saschpe.gameon)
@@ -107,5 +112,4 @@ Snapshots of the development version are available in [Sonatype's `snapshots` re
     See the License for the specific language governing permissions and
     limitations under the License.
 
-
-[sonatype]: https://oss.sonatype.org/content/repositories/snapshots/
+[maven-central]: https://search.maven.org/artifact/de.peilicke.sascha/android-customtabs

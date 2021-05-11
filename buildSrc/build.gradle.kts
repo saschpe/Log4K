@@ -1,28 +1,25 @@
 plugins {
-    kotlin("jvm") version "1.4.31"
+    `kotlin-dsl`
 }
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation(kotlin("stdlib"))
-}
-
 tasks {
     val ensureSecretsExist by registering {
-        val secretFile = File("$rootDir/src/main/kotlin/Secrets.kt")
-        description = "Ensures that $secretFile exists"
+        val secretFile = File("$projectDir/src/main/kotlin/Secrets.kt")
+        description = "Ensures that '$secretFile' exists"
 
+        outputs.file(secretFile)
         doFirst {
             if (!secretFile.exists()) {
                 secretFile.writeText(
                     """
 object Secrets {
-    object Bintray {
-        const val username = ""
-        const val password = ""
+    object Sonatype {
+        const val user = ""
+        const val apiKey = ""
     }
 }
 

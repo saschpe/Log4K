@@ -2,20 +2,13 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     `maven-publish`
+    signing
 }
 
 repositories {
-    google()
     mavenCentral()
-    jcenter {
-        content {
-            includeModule("org.jetbrains.trove4j", "trove4j") // https://youtrack.jetbrains.com/issue/IDEA-261387
-        }
-    }
+    google()
 }
-
-group = "saschpe.log4k"
-version = "1.0.0"
 
 android {
     compileSdkVersion(30)
@@ -41,6 +34,9 @@ android {
     testOptions.unitTests.isIncludeAndroidResources = true
 }
 
+group = "de.peilicke.sascha"
+version = "1.0.1"
+
 kotlin {
     android {
         compilations.all { kotlinOptions.jvmTarget = "1.8" }
@@ -63,7 +59,7 @@ kotlin {
             dependencies {
                 implementation(kotlin("test-annotations-common"))
                 implementation(kotlin("test-common"))
-                implementation("io.mockk:mockk-common:1.10.6")
+                implementation("io.mockk:mockk-common:1.11.0")
             }
         }
 
@@ -75,7 +71,7 @@ kotlin {
                 implementation(kotlin("test-junit"))
                 implementation("androidx.test:core-ktx:1.3.0")
                 implementation("androidx.test.ext:junit-ktx:1.1.2")
-                implementation("io.mockk:mockk:1.10.6")
+                implementation("io.mockk:mockk:1.11.0")
             }
         }
 
@@ -97,7 +93,7 @@ kotlin {
         named("jsTest") {
             dependencies {
                 implementation(kotlin("test-js"))
-                implementation("io.mockk:mockk-dsl-js:1.10.6")
+                implementation("io.mockk:mockk-dsl-js:1.11.0")
             }
         }
 
@@ -106,7 +102,7 @@ kotlin {
             dependencies {
                 implementation(kotlin("test"))
                 implementation(kotlin("test-junit"))
-                implementation("io.mockk:mockk:1.10.6")
+                implementation("io.mockk:mockk:1.11.0")
             }
         }
     }
@@ -145,15 +141,53 @@ kotlin {
     }
 }
 
+val javadocJar by tasks.registering(Jar::class) {
+    archiveClassifier.set("javadoc")
+}
+
 publishing {
-    repositories {
-        maven {
-            name = "bintray"
-            credentials {
-                username = Secrets.Bintray.username
-                password = Secrets.Bintray.password
+    publications.withType<MavenPublication> {
+        artifact(javadocJar.get())
+
+        pom {
+            name.set("Log4K")
+            description.set("Lightweight logging library for Kotlin/Multiplatform. Supports Android, iOS, JavaScript and plain JVM environments.")
+            url.set("https://github.com/saschpe/log4k")
+
+            licenses {
+                license {
+                    name.set("MIT")
+                    url.set("https://opensource.org/licenses/MIT")
+                }
             }
-            url = uri("https://api.bintray.com/maven/saschpe/maven/log4k/;publish=1")
+            developers {
+                developer {
+                    id.set("saschpe")
+                    name.set("Sascha Peilicke")
+                    email.set("sascha@peilicke.de")
+                }
+            }
+            scm {
+                connection.set("scm:git:git://github.com/saschpe/log4k.git")
+                developerConnection.set("scm:git:ssh://github.com/saschpe/log4k.git")
+                url.set("https://github.com/saschpe/log4k")
+            }
         }
     }
+
+    repositories {
+        maven {
+            name = "sonatype"
+            credentials {
+                username = Secrets.Sonatype.user
+                password = Secrets.Sonatype.apiKey
+            }
+            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
+        }
+    }
+}
+
+signing {
+    useGpgCmd()
+    sign(publishing.publications)
 }
