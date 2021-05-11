@@ -188,6 +188,11 @@ publishing {
 }
 
 signing {
-    useGpgCmd()
+    val sonatypeGpgKey = System.getenv("SONATYPE_GPG_KEY")
+    val sonatypeGpgKeyPassword = System.getenv("SONATYPE_GPG_KEY_PASSWORD")
+    when {
+        sonatypeGpgKey == null || sonatypeGpgKeyPassword == null -> useGpgCmd()
+        else -> useInMemoryPgpKeys(sonatypeGpgKey, sonatypeGpgKeyPassword)
+    }
     sign(publishing.publications)
 }
