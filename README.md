@@ -88,8 +88,8 @@ class MyApplication : Application() {
 Snapshots of the development version are available in [Sonatype's `snapshots` repository][sonatype].
 
 ## Users
- - [Alpha+ Player - Unofficial player for Soma FM](https://play.google.com/store/apps/details?id=saschpe.alphaplus)
- - [GameOn - Get games on sale](https://play.google.com/store/apps/details?id=saschpe.gameon)
+- [Alpha+ Player - Unofficial player for Soma FM](https://play.google.com/store/apps/details?id=saschpe.alphaplus)
+- [GameOn - Get games on sale](https://play.google.com/store/apps/details?id=saschpe.gameon)
 
 ## License
 
@@ -108,4 +108,4 @@ Snapshots of the development version are available in [Sonatype's `snapshots` re
     limitations under the License.
 
 
- [sonatype]: https://oss.sonatype.org/content/repositories/snapshots/
+[sonatype]: https://oss.sonatype.org/content/repositories/snapshots/

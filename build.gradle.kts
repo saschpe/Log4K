@@ -11,11 +11,11 @@ buildscript {
 plugins {
     id("com.diffplug.spotless") version "5.7.0"
     id("com.github.ben-manes.versions") version "0.33.0"
-    kotlin("jvm") version "1.4.10"
+    kotlin("jvm") version "1.4.31"
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 spotless {
