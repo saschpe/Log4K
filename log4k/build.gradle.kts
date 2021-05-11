@@ -2,15 +2,13 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     `maven-publish`
+    signing
 }
 
 repositories {
     mavenCentral()
     google()
 }
-
-group = "saschpe.log4k"
-version = "1.0.0"
 
 android {
     compileSdkVersion(30)
@@ -35,6 +33,9 @@ android {
 
     testOptions.unitTests.isIncludeAndroidResources = true
 }
+
+group = "de.peilicke.sascha"
+version = "1.0.0"
 
 kotlin {
     android {
@@ -140,15 +141,53 @@ kotlin {
     }
 }
 
+val javadocJar by tasks.registering(Jar::class) {
+    archiveClassifier.set("javadoc")
+}
+
 publishing {
-    repositories {
-        maven {
-            name = "bintray"
-            credentials {
-                username = Secrets.Bintray.username
-                password = Secrets.Bintray.password
+    publications.withType<MavenPublication> {
+        artifact(javadocJar.get())
+
+        pom {
+            name.set("Log4K")
+            description.set("Lightweight logging library for Kotlin/Multiplatform. Supports Android, iOS, JavaScript and plain JVM environments.")
+            url.set("https://github.com/saschpe/log4k")
+
+            licenses {
+                license {
+                    name.set("MIT")
+                    url.set("https://opensource.org/licenses/MIT")
+                }
             }
-            url = uri("https://api.bintray.com/maven/saschpe/maven/log4k/;publish=1")
+            developers {
+                developer {
+                    id.set("saschpe")
+                    name.set("Sascha Peilicke")
+                    email.set("sascha@peilicke.de")
+                }
+            }
+            scm {
+                connection.set("scm:git:git://github.com/saschpe/log4k.git")
+                developerConnection.set("scm:git:ssh://github.com/saschpe/log4k.git")
+                url.set("https://github.com/saschpe/log4k")
+            }
         }
     }
+
+    repositories {
+        maven {
+            name = "sonatype"
+            credentials {
+                username = Secrets.Sonatype.user
+                password = Secrets.Sonatype.apiKey
+            }
+            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
+        }
+    }
+}
+
+signing {
+    useGpgCmd()
+    sign(publishing.publications)
 }
