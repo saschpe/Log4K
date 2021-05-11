@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-    implementation("de.peilicke.sascha:log4k:1.0.0")
+    implementation("de.peilicke.sascha:log4k:1.0.1")
 }
 ```
 
