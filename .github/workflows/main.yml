@@ -67,7 +67,7 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: log4k_build
-      - name: Publish to Bintray
+      - name: Publish to Sonatype (Maven Central)
         shell: bash
         run: |
           brew install gnupg
