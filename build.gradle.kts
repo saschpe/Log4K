@@ -4,14 +4,14 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:4.1.1")
+        classpath("com.android.tools.build:gradle:7.0.4")
     }
 }
 
 plugins {
-    id("com.diffplug.spotless") version "5.12.4"
-    id("com.github.ben-manes.versions") version "0.38.0"
-    kotlin("jvm") version "1.5.0"
+    id("com.diffplug.spotless") version "6.3.0"
+    id("com.github.ben-manes.versions") version "0.42.0"
+    kotlin("jvm") version "1.6.10"
 }
 
 repositories {

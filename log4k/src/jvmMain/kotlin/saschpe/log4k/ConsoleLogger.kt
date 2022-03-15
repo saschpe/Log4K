@@ -4,17 +4,19 @@ import java.io.PrintWriter
 import java.io.StringWriter
 import java.util.logging.ConsoleHandler
 import java.util.logging.Level
-import java.util.logging.Logger as JavaLogger
 import java.util.logging.SimpleFormatter
+import java.util.logging.Logger as JavaLogger
 
 actual class ConsoleLogger : Logger() {
     private val javaLogger = JavaLogger.getLogger(ConsoleLogger::class.java.name).apply {
         level = Level.ALL
         System.setProperty("java.util.logging.SimpleFormatter.format", "%1\$tF %1\$tT %5\$s %n")
-        addHandler(ConsoleHandler().apply {
-            level = Level.ALL
-            formatter = SimpleFormatter()
-        })
+        addHandler(
+            ConsoleHandler().apply {
+                level = Level.ALL
+                formatter = SimpleFormatter()
+            }
+        )
         useParentHandlers = false
     }
 
