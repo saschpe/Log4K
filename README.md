@@ -1,4 +1,5 @@
 # Log4K
+
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 ![Maven Central](https://img.shields.io/maven-central/v/de.peilicke.sascha/log4k)
 [![Build Status](https://github.com/saschpe/log4k/workflows/Main%20CI/badge.svg)](https://github.com/saschpe/log4k/actions)
@@ -12,7 +13,9 @@ Lightweight logging library for Kotlin/Multiplatform. Supports Android, iOS,
 JavaScript and plain JVM environments.
 
 ## Download
+
 Artifacts are published to [Maven Central][maven-central]:
+
 ```kotlin
 repositories {
     mavenCentral()
@@ -24,16 +27,28 @@ dependencies {
 ```
 
 ## Usage
+
 Logging messages is straightforward, the **Log** object provides the usual
 functions you'd expect:
 
 ```kotlin
 Log.verbose("FYI")
 Log.debug("Debugging ${foo.bar}")
-Log.info("Nice to know")
+Log.info("Nice to know", tag = "SomeClass")
 Log.warn("Warning about $stuff ...")
 Log.error("Oops!")
 Log.assert("Something went wrong!", throwable)
+```
+
+or, if you prefer:
+
+```kotlin
+Log.verbose { "FYI" }
+Log.debug { "Debugging ${foo.bar}" }
+Log.info(tag = "SomeClass") {"Nice to know" }
+Log.warn {"Warning about $stuff ..." }
+Log.error { "Oops!" }
+Log.assert(throwable = Exception("Ouch!")) { "Something went wrong!" }
 ```
 
 The log output includes the function name and line and pretty-prints exceptions
@@ -41,7 +56,34 @@ on all supported platforms:
 
     I/Application.onCreate: Log4K rocks!
 
+### Logging objects
+
+In case you want to log `Any` Kotlin class instance or object:
+
+```kotlin
+val map = mapOf("Hello" to "World")
+map.logged()
+```
+
+The above example logs `{Hello=World}` with the tag `SingletonMap` with the log level `Debug`.
+
+### Logging expensive results
+
+Sometimes, the log output involves a heavy computation that is not always necessary. For example, if the global log
+level is set to `Info` or above, the following text would not appear in any log output:
+
+```kotlin
+Log.debug("Some ${veryHeavyStuff()}")
+```
+
+However, the function `veryHeavyStuff()` will be executed regardless. To avoid this, use:
+
+```kotlin
+Log.debug { "Some ${veryHeavyStuff()}" }
+```
+
 ## Configuration (Android example)
+
 To only output messages with log-level *info* and above, you can configure the
 console logger in your Application class:
 
@@ -59,6 +101,7 @@ class MyApplication : Application() {
 ```
 
 ## Custom logger (Android Crashlytics example)
+
 The library provides a cross-platform `ConsoleLogger` by default. Custom
 loggers can easily be added. For instance, to send only `ERROR` and `ASSERT`
 messages to Crashlytics in production builds, you could do the following:
@@ -93,6 +136,7 @@ class MyApplication : Application() {
 ```
 
 ## Users
+
 - [Alpha+ Player - Unofficial player for Soma FM](https://play.google.com/store/apps/details?id=saschpe.alphaplus)
 - [GameOn - Get games on sale](https://play.google.com/store/apps/details?id=saschpe.gameon)
 

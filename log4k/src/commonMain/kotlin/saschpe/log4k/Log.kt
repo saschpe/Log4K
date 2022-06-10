@@ -48,4 +48,5 @@ object Log {
         loggers.forEach { it.log(priority, tag, message, throwable) }
 }
 
-fun Any.logged(level: Log.Level = Log.Level.Debug) = apply { Log.log(level, message = toString(), tag = this::class.simpleName ?: "") }
+fun Any.logged(level: Log.Level = Log.Level.Debug) =
+    apply { Log.log(level, message = toString(), tag = this::class.simpleName ?: "") }
