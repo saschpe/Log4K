@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.6.21"
+    kotlin("jvm") version "1.7.0"
     id("com.android.library") version "7.0.4" apply false
     id("com.diffplug.spotless") version "6.7.0"
     id("com.github.ben-manes.versions") version "0.42.0"
