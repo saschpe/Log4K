@@ -32,6 +32,10 @@ Logging messages is straightforward, the **Log** object provides the usual
 functions you'd expect:
 
 ```kotlin
+// Configure logger types
+Log.loggers += ConsoleLogger()
+
+// Log to your heart's content
 Log.verbose("FYI")
 Log.debug("Debugging ${foo.bar}")
 Log.info("Nice to know", tag = "SomeClass")
@@ -91,11 +95,11 @@ console logger in your Application class:
 class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        Log.loggers.add(ConsoleLogger().apply {
+        Log.loggers += ConsoleLogger().apply {
             if (!BuildConfig.DEBUG) {
                 minimumLogLevel = Log.Level.Info
             }
-        })
+        }
     }
 }
 ```

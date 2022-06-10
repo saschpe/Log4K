@@ -9,7 +9,7 @@ import kotlin.test.Test
 class LogTestJs {
     @BeforeTest // Arrange
     fun before() {
-        Log.loggers.add(TestLogger())
+        Log.loggers += TestLogger()
     }
 
     @Test
