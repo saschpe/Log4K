@@ -5,17 +5,12 @@ plugins {
     signing
 }
 
-repositories {
-    mavenCentral()
-    google()
-}
-
 kotlin {
     android { publishAllLibraryVariants() }
     ios { binaries.framework("Log4K") }
     iosSimulatorArm64 { binaries.framework("Log4K") }
     js {
-//        nodejs() // TODO: Wait for Kotlin-1.6.20 which uses Node-16 instead of 14.
+        nodejs()
         compilations.all {
             kotlinOptions.sourceMap = true
             kotlinOptions.moduleKind = "umd"
@@ -46,10 +41,12 @@ android {
     }
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+
+    testCoverage.jacocoVersion = "0.8.8"
 }
 
 group = "de.peilicke.sascha"
-version = "1.0.2"
+version = "1.0.3"
 
 val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
