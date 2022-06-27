@@ -24,7 +24,12 @@ kotlin {
     sourceSets["iosSimulatorArm64Main"].dependsOn(sourceSets["iosMain"])
     sourceSets["iosSimulatorArm64Test"].dependsOn(sourceSets["iosTest"])
 
-    sourceSets.remove(sourceSets["androidAndroidTestRelease"]) // https://issuetracker.google.com/issues/152187160
+    sourceSets { // https://issuetracker.google.com/issues/152187160
+        remove(sourceSets["androidAndroidTestRelease"])
+        remove(sourceSets["androidTestFixtures"])
+        remove(sourceSets["androidTestFixturesDebug"])
+        remove(sourceSets["androidTestFixturesRelease"])
+    }
 
     targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetWithSimulatorTests::class.java) {
         testRuns["test"].deviceId = "iPhone 13"
@@ -32,12 +37,12 @@ kotlin {
 }
 
 android {
-    buildToolsVersion = "32.0.0"
-    compileSdk = 31
+    buildToolsVersion = "33.0.0"
+    compileSdk = 32
 
     defaultConfig {
         minSdk = 17
-        targetSdk = 31
+        targetSdk = 32
     }
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
@@ -46,7 +51,7 @@ android {
 }
 
 group = "de.peilicke.sascha"
-version = "1.1.1"
+version = "1.1.2"
 
 val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
