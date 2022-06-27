@@ -1,5 +1,4 @@
 name: Main CI
-
 on: [push]
 
 jobs:
