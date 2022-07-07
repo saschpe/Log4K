@@ -14,7 +14,7 @@ abstract class Logger {
     var minimumLogLevel = Log.Level.Verbose
 
     fun log(level: Log.Level, tag: String = "", message: String?, throwable: Throwable?) {
-        if (level.ordinal >= minimumLogLevel.ordinal) {
+        if (level >= minimumLogLevel) {
             print(level, tag, message, throwable)
         }
     }
