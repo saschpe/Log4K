@@ -12,6 +12,14 @@ object Log {
     @JvmField
     val loggers = mutableListOf<Logger>()
 
+    /**
+     * Returns true if any [Logger.minimumLogLevel] is [Log.Level.Verbose] or [Log.Level.Debug]
+     *
+     * Similar to SLF4Js `LOG.isDebugEnabled`
+     */
+    val isDebugEnabled
+        get() = loggers.any { it.minimumLogLevel <= Level.Debug }
+
     @JvmOverloads
     @JvmStatic
     fun verbose(message: String, throwable: Throwable? = null, tag: String = "") =

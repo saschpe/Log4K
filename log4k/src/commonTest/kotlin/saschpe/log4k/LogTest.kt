@@ -1,9 +1,7 @@
 package saschpe.log4k
 
 import testing.*
-import kotlin.test.AfterTest
-import kotlin.test.BeforeTest
-import kotlin.test.Test
+import kotlin.test.*
 
 class LogTest {
     @BeforeTest // Arrange
@@ -129,6 +127,19 @@ class LogTest {
 
         // Assert
         assertTestLogger(Log.Level.Debug, "(Hello, World)", "Pair", null)
+    }
+
+    @Test
+    fun isDebugEnabled() {
+        assertTrue(Log.isDebugEnabled, "TestLogger defaults to ${Log.Level.Verbose}")
+        Log.loggers.clear()
+        Log.loggers += StubLoggerWithMinimum(Log.Level.Warning)
+        Log.loggers += StubLoggerWithMinimum(Log.Level.Info)
+        assertFalse(Log.isDebugEnabled)
+        Log.loggers += StubLoggerWithMinimum(Log.Level.Debug)
+        assertTrue(Log.isDebugEnabled, "One of multiple logger has ${Log.Level.Debug} set")
+        Log.loggers.clear()
+        assertFalse(Log.isDebugEnabled)
     }
 
     @AfterTest
