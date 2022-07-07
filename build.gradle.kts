@@ -19,10 +19,7 @@ spotless {
         target("source/**/src/**/*.kt")
         targetExclude("**/build/**/*.kt")
         ktlint().editorConfigOverride(
-            mapOf(
-                "disabled_rules" to "filename,no-wildcard-imports",
-                "insert_final_newline" to false
-            )
+            mapOf("disabled_rules" to "filename,no-wildcard-imports", "insert_final_newline" to false)
         )
     }
     kotlinGradle {
