@@ -6,3 +6,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 - Add method `Log.isDebugEnabled` identical to SLF4J's `LOG.isDebugEnabled()`.
+- Dependency update:
+  - [Kotlin 1.7.10](https://github.com/JetBrains/kotlin/releases/tag/v1.7.10)
