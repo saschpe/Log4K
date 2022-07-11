@@ -10,7 +10,7 @@ object Log {
     enum class Level { Verbose, Debug, Info, Warning, Error, Assert }
 
     @JvmField
-    val loggers = mutableListOf<Logger>()
+    val loggers = mutableListOf<Logger>(ConsoleLogger())
 
     /**
      * Returns true if any [Logger.minimumLogLevel] is [Log.Level.Verbose] or [Log.Level.Debug]

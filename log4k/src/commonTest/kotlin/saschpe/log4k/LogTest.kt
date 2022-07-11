@@ -6,6 +6,7 @@ import kotlin.test.*
 class LogTest {
     @BeforeTest // Arrange
     fun before() {
+        Log.loggers.clear()
         Log.loggers += TestLogger()
     }
 
