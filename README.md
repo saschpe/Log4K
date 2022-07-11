@@ -1,12 +1,13 @@
 # Log4K
-[![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
-![Maven Central](https://img.shields.io/maven-central/v/de.peilicke.sascha/log4k)
 [![Build Status](https://github.com/saschpe/log4k/workflows/Main%20CI/badge.svg)](https://github.com/saschpe/log4k/actions)
-![badge-android](http://img.shields.io/badge/platform-android-brightgreen.svg?style=flat)
-![badge-native](http://img.shields.io/badge/platform-native-lightgrey.svg?style=flat)
-![badge-js](http://img.shields.io/badge/platform-js-yellow.svg?style=flat)
-![badge-jvm](http://img.shields.io/badge/platform-jvm-orange.svg?style=flat)
-![Kotlin Version](https://img.shields.io/badge/kotlin-v1.3.60-F88909?style=flat&logo=kotlin)
+[![Maven Central](https://img.shields.io/maven-central/v/de.peilicke.sascha/log4k.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22de.peilicke.sascha%22%20AND%20a:%22log4k%22)
+![Kotlin Version](https://img.shields.io/badge/Kotlin-v1.7.10-purple?style=flat&logo=kotlin)
+[![GitHub license](https://img.shields.io/badge/License-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
+
+![badge-android](http://img.shields.io/badge/Platform-Android-brightgreen.svg?style=flat)
+![badge-ios](http://img.shields.io/badge/Platform-iOS-orange.svg?style=flat)
+![badge-js](http://img.shields.io/badge/Platform-JS-yellow.svg?style=flat)
+![badge-jvm](http://img.shields.io/badge/Platform-JVM-orange.svg?style=flat)
 
 Lightweight logging library for Kotlin/Multiplatform. Supports Android, iOS, JavaScript and plain JVM environments.
 
