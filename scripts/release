@@ -13,6 +13,7 @@ SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 # Constants
 FILES=(
   log4k/build.gradle.kts
+  log4k-slf4j/build.gradle.kts
 )
 
 # Functions
