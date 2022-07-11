@@ -7,8 +7,8 @@ plugins {
 
 kotlin {
     android { publishAllLibraryVariants() }
-    ios { binaries.framework("Log4K") }
-    iosSimulatorArm64 { binaries.framework("Log4K") }
+    ios { binaries.framework("Log4K-SLF4J") }
+    iosSimulatorArm64 { binaries.framework("Log4K-SLF4J") }
     js {
         nodejs()
         compilations.all {
@@ -18,11 +18,20 @@ kotlin {
     }
     jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
 
+    sourceSets["androidMain"].dependencies {
+        implementation("org.slf4j:slf4j-api:1.7.36")
+    }
+    sourceSets["commonMain"].dependencies {
+        implementation(project(":log4k"))
+    }
     sourceSets["commonTest"].dependencies {
         implementation(kotlin("test"))
     }
     sourceSets["iosSimulatorArm64Main"].dependsOn(sourceSets["iosMain"])
     sourceSets["iosSimulatorArm64Test"].dependsOn(sourceSets["iosTest"])
+    sourceSets["jvmMain"].dependencies {
+        implementation("org.slf4j:slf4j-api:1.7.36")
+    }
 
     sourceSets { // https://issuetracker.google.com/issues/152187160
         remove(sourceSets["androidAndroidTestRelease"])
@@ -62,8 +71,8 @@ publishing {
         artifact(javadocJar.get())
 
         pom {
-            name.set("Log4K")
-            description.set("Lightweight logging library for Kotlin/Multiplatform. Supports Android, iOS, JavaScript and plain JVM environments.")
+            name.set("Log4K-SLF4J")
+            description.set("Lightweight logging library for Kotlin/Multiplatform - SLF4J integration. Supports Android, iOS, JavaScript and plain JVM environments.")
             url.set("https://github.com/saschpe/log4k")
 
             licenses {
