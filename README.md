@@ -95,6 +95,25 @@ class MyApplication : Application() {
 }
 ```
 
+## Logging to a file
+
+By default, the library only logs to the current platform's console.
+Additionally or instead, add one or multiple file loggers:
+
+```kotlin
+// Log with daily rotation and keep five log files at max:
+Log.loggers += FileLogger(rotate = Rotate.Daily, limit = Limit.Files(max = 5))
+
+// Log to a custom path and rotate every 1000 lines written:
+Log.loggers += FileLogger(rotate = Rotate.After(lines = 1000), logPath = "myLogPath")
+
+// Log with sensible defaults (daily, keep 10 files)
+Log.loggers += FileLogger()
+
+// On huge eternal log file:
+Log.loggers += FileLogger(rotate = Rotate.Never, limit = Limit.Not)
+```
+
 ## Custom logger (Android Crashlytics example)
 The library provides a cross-platform `ConsoleLogger` by default. Custom loggers can easily be added. For instance, to
 send only `ERROR` and `ASSERT` messages to Crashlytics in production builds, you could do the following:

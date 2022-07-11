@@ -19,8 +19,15 @@ kotlin {
     applyDefaultHierarchyTemplate()
 
     sourceSets {
+        commonMain.dependencies {
+            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0-RC.2")
+            implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.3.3")
+        }
         commonTest.dependencies {
             implementation(kotlin("test"))
+        }
+        jsMain.dependencies {
+            implementation("org.jetbrains.kotlin-wrappers:kotlin-node:20.11.30-pre.738")
         }
         jsTest.dependencies {
             implementation(kotlin("test-js"))
