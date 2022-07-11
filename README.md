@@ -32,9 +32,6 @@ Logging messages is straightforward, the **Log** object provides the usual
 functions you'd expect:
 
 ```kotlin
-// Configure logger types
-Log.loggers += ConsoleLogger()
-
 // Log to your heart's content
 Log.verbose("FYI")
 Log.debug("Debugging ${foo.bar}")
@@ -95,9 +92,9 @@ console logger in your Application class:
 class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        Log.loggers += ConsoleLogger().apply {
+        Log.loggers.forEach {
             if (!BuildConfig.DEBUG) {
-                minimumLogLevel = Log.Level.Info
+                it.minimumLogLevel = Log.Level.Info
             }
         }
     }
@@ -114,6 +111,7 @@ messages to Crashlytics in production builds, you could do the following:
 class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        Log.loggers.clear() // Remove default loggers
         Log.loggers += when {
             BuildConfig.DEBUG -> ConsoleLogger()
             else -> CrashlyticsLogger()
