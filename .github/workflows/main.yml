@@ -20,7 +20,7 @@ jobs:
         run: ./gradlew spotlessCheck
 
   build:
-    runs-on: macos-latest
+    runs-on: macos-12
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: true
@@ -50,7 +50,7 @@ jobs:
 
   publish:
     needs: build
-    runs-on: macos-latest
+    runs-on: macos-12
     if: github.ref == 'refs/heads/master'
     environment: Sonatype
     env:

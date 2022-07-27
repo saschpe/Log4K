@@ -17,6 +17,11 @@ kotlin {
         }
     }
     jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
+    linuxX64()
+    macosArm64 { binaries.framework("Log4K") }
+    mingwX64() // Winwhat?!?
+    tvos { binaries.framework("Log4K") }
+    watchos { binaries.framework("Log4K") }
 
     sourceSets["commonTest"].dependencies {
         implementation(kotlin("test"))

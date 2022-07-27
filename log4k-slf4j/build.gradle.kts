@@ -17,6 +17,11 @@ kotlin {
         }
     }
     jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
+    linuxX64()
+    macosArm64 { binaries.framework("Log4K-SLF4J") }
+    mingwX64() // Winwhat?!?
+    tvos { binaries.framework("Log4K-SLF4J") }
+    watchos { binaries.framework("Log4K-SLF4J") }
 
     sourceSets["androidMain"].dependencies {
         implementation("org.slf4j:slf4j-api:1.7.36")

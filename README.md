@@ -1,13 +1,18 @@
 # Log4K
-[![Build Status](https://github.com/saschpe/log4k/workflows/Main%20CI/badge.svg)](https://github.com/saschpe/log4k/actions)
+![Kotlin Version](https://img.shields.io/badge/Kotlin-1.7.10-B125EA?logo=kotlin)
 [![Maven Central](https://img.shields.io/maven-central/v/de.peilicke.sascha/log4k.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22de.peilicke.sascha%22%20AND%20a:%22log4k%22)
-![Kotlin Version](https://img.shields.io/badge/Kotlin-v1.7.10-purple?style=flat&logo=kotlin)
-[![GitHub license](https://img.shields.io/badge/License-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
+[![Build Status](https://github.com/saschpe/log4k/workflows/Main%20CI/badge.svg)](https://github.com/saschpe/log4k/actions)
+[![License](http://img.shields.io/:License-Apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
-![badge-android](http://img.shields.io/badge/Platform-Android-brightgreen.svg?style=flat)
-![badge-ios](http://img.shields.io/badge/Platform-iOS-orange.svg?style=flat)
-![badge-js](http://img.shields.io/badge/Platform-JS-yellow.svg?style=flat)
-![badge-jvm](http://img.shields.io/badge/Platform-JVM-orange.svg?style=flat)
+![badge-android](http://img.shields.io/badge/Platform-Android-brightgreen.svg?logo=android)
+![badge-ios](http://img.shields.io/badge/Platform-iOS-orange.svg?logo=apple)
+![badge-js](http://img.shields.io/badge/Platform-JS-yellow.svg?logo=javascript)
+![badge-jvm](http://img.shields.io/badge/Platform-JVM-red.svg?logo=openjdk)
+![badge-linux](http://img.shields.io/badge/Platform-Linux-lightgrey.svg?logo=linux)
+![badge-macos](http://img.shields.io/badge/Platform-macOS-orange.svg?logo=apple)
+![badge-tvos](http://img.shields.io/badge/Platform-tvOS-orange.svg?logo=apple)
+![badge-watchos](http://img.shields.io/badge/Platform-watchOS-orange.svg?logo=apple)
+![badge-windows](http://img.shields.io/badge/Platform-Windows-blue.svg?logo=windows)
 
 Lightweight logging library for Kotlin/Multiplatform. Supports Android, iOS, JavaScript and plain JVM environments.
 

@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 - Dependency update:
   - [Gradle-7.5](https://docs.gradle.org/7.5/release-notes.html)
+- Add targets: linuxX64, macosArm64, tvOS, tvos, watchos
 
 ## [1.2.2] - 2022-07-11
 
