@@ -7,8 +7,8 @@ plugins {
 
 kotlin {
     android { publishAllLibraryVariants() }
-    ios { binaries.framework("Log4K") }
-    iosSimulatorArm64 { binaries.framework("Log4K") }
+    ios()
+    iosSimulatorArm64()
     js {
         nodejs()
         compilations.all {
