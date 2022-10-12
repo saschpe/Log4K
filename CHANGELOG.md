@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dependency update:
   - [Android Gradle Plugin 7.2.2](https://developer.android.com/studio/releases/gradle-plugin#7-2-0)
   - [Gradle-7.5.1](https://docs.gradle.org/7.5.1/release-notes.html)
+  - [Kotlin-1.7.20](https://kotlinlang.org/docs/whatsnew1720.html)
 ### Removed
 - Stop building frameworks, they aren't published by default
 
