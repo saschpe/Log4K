@@ -5,10 +5,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.2.3] - 2022-10-12
 ### Changed
+- Android: Target API level 33 (Android 13)
 - Dependency update:
-  - [Android Gradle Plugin 7.2.2](https://developer.android.com/studio/releases/gradle-plugin#7-2-0)
-  - [Gradle-7.5.1](https://docs.gradle.org/7.5.1/release-notes.html)
+  - [Android Gradle Plugin 7.3.0](https://developer.android.com/studio/releases/gradle-plugin#7-3-0)
+  - [Gradle 7.5.1](https://docs.gradle.org/7.5.1/release-notes.html)
+  - [Kotlin 1.7.20](https://kotlinlang.org/docs/whatsnew1720.html)
 ### Removed
 - Stop building frameworks, they aren't published by default
 

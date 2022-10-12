@@ -38,11 +38,11 @@ kotlin {
 
 android {
     buildToolsVersion = "33.0.0"
-    compileSdk = 32
+    compileSdk = 33
 
     defaultConfig {
         minSdk = 17
-        targetSdk = 32
+        targetSdk = 33
     }
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
@@ -51,7 +51,7 @@ android {
 }
 
 group = "de.peilicke.sascha"
-version = "1.2.2"
+version = "1.2.3"
 
 val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
