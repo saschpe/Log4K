@@ -6,7 +6,7 @@ plugins {
 }
 
 kotlin {
-    android { publishAllLibraryVariants() }
+    androidTarget { publishAllLibraryVariants() }
     ios()
     iosSimulatorArm64()
     js {
@@ -33,15 +33,8 @@ kotlin {
         implementation("org.slf4j:slf4j-api:1.7.36")
     }
 
-    sourceSets { // https://issuetracker.google.com/issues/152187160
-        remove(sourceSets["androidAndroidTestRelease"])
-        remove(sourceSets["androidTestFixtures"])
-        remove(sourceSets["androidTestFixturesDebug"])
-        remove(sourceSets["androidTestFixturesRelease"])
-    }
-
     targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetWithSimulatorTests::class.java) {
-        testRuns["test"].deviceId = "iPhone 13"
+        testRuns["test"].deviceId = "iPhone 14"
     }
 }
 
