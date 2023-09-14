@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Allow empty log messages if you only want to create a log entry about a function being called.
 - Dependency update:
   - [Kotlin 1.9.10](https://kotlinlang.org/docs/whatsnew19.html)
+  - [Gradle-8.7](https://docs.gradle.org/8.7/release-notes.html)
 
 ## [1.2.3] - 2022-10-12
 ### Changed
