@@ -26,6 +26,6 @@ actual class ConsoleLogger : Logger() {
         Log.Level.Info to "💚 Info",
         Log.Level.Warning to "💛 Warn",
         Log.Level.Error to "❤️ Error",
-        Log.Level.Assert to "💜 Assert"
+        Log.Level.Assert to "💜 Assert",
     )
 }

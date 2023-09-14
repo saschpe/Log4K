@@ -1,6 +1,4 @@
 plugins {
-    kotlin("jvm") version "1.9.10"
-    id("com.android.library") version "7.3.0" apply false
     id("com.diffplug.spotless") version "6.21.0"
     id("com.github.ben-manes.versions") version "0.48.0"
 }
@@ -11,9 +9,17 @@ spotless {
         propertiesFile("gradle.properties")
     }
     kotlin {
-        ktlint()
+        target("**/*.kt")
+        ktlint().setEditorConfigPath(".editorconfig")
     }
     kotlinGradle {
-        ktlint()
+        ktlint().setEditorConfigPath(".editorconfig")
+    }
+}
+
+tasks.withType<com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask> {
+    rejectVersionIf {
+        fun isStable(version: String) = Regex("^[0-9,.v-]+(-r)?$").matches(version)
+        !isStable(candidate.version) && isStable(currentVersion)
     }
 }

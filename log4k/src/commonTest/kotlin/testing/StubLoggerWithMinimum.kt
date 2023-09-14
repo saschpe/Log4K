@@ -4,7 +4,7 @@ import saschpe.log4k.Log
 import saschpe.log4k.Logger
 
 class StubLoggerWithMinimum(
-    minimumLogLevel: Log.Level
+    minimumLogLevel: Log.Level,
 ) : Logger() {
     init {
         this.minimumLogLevel = minimumLogLevel

@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dependency update:
   - [Kotlin 1.9.10](https://kotlinlang.org/docs/whatsnew19.html)
   - [Gradle-8.7](https://docs.gradle.org/8.7/release-notes.html)
+  - [Android Gradle Plugin 8.2.2](https://developer.android.com/build/releases/past-releases/agp-8-2-0-release-notes)
 
 ## [1.2.3] - 2022-10-12
 ### Changed
