@@ -129,6 +129,26 @@ class MyApplication : Application() {
 }
 ```
 
+## Ktor integration
+
+Ktor supports [providing a custom logger][ktor-logging]:
+
+```kotlin
+import io.ktor.client.*
+import io.ktor.client.engine.cio.*
+import io.ktor.client.plugins.logging.*
+import saschpe.log4k.Log
+
+val httpClient = HttpClient(CIO) {
+    install(Logging) {
+        level = LogLevel.ALL
+        logger = object : Logger {
+            override fun log(message: String) = Log.info { message }
+        }
+    }
+}
+```
+
 ## Users
 
 - [Alpha+ Player - Unofficial player for Soma FM](https://play.google.com/store/apps/details?id=saschpe.alphaplus)
@@ -149,5 +169,7 @@ class MyApplication : Application() {
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+
+[ktor-logging]: https://ktor.io/docs/client-logging.html#custom_logger
 
 [maven-central]: https://search.maven.org/artifact/de.peilicke.sascha/android-customtabs
