@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.5] - 2024-03-23
+- Provide javadoc artifacts for Sonatype Maven Central
+
 ## [1.2.4] - 2024-03-23
 ### Changed
 - Allow empty log messages if you only want to create a log entry about a function being called.

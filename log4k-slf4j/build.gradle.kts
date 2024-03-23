@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("org.jetbrains.dokka")
     `maven-publish`
     signing
 }
@@ -39,10 +40,17 @@ android {
 }
 
 group = "de.peilicke.sascha"
-version = "1.2.4"
+version = "1.2.5"
 
 publishing {
     publications.withType<MavenPublication> {
+        artifact(project.tasks.register("${name}DokkaJar", Jar::class) {
+            group = JavaBasePlugin.DOCUMENTATION_GROUP
+            description = "Assembles Kotlin docs with Dokka into a Javadoc jar"
+            archiveClassifier.set("javadoc")
+            from(tasks.named("dokkaHtml"))
+            archiveBaseName.set("${archiveBaseName.get()}-$name")
+        })
         pom {
             name.set("Log4K-SLF4J")
             description.set("Lightweight logging library for Kotlin/Multiplatform - SLF4J integration. Supports Android, iOS, JavaScript and plain JVM environments.")
