@@ -31,13 +31,10 @@ safe() {
 }
 
 sed2() {
-  _args=$(echo "${@}" | cut -d" " -f2-)
-  sed -i'.bak' "$1" "${_args}"
-  for file in ${_args}; do
+  cmd="${1}"
+  shift
+  sed -i'.bak' "${cmd}" "${@}"
+  for file in "${@}"; do
     rm "${file}.bak"
   done
-}
-
-get_version_name() {
-  grep "version = " "$1" | xargs | cut -d"=" -f2
 }
