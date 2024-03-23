@@ -31,11 +31,11 @@ android {
     namespace = "saschpe.log4k.slf4j"
 
     defaultConfig {
-        compileSdk = 33
+        compileSdk = 34
         minSdk = 17
     }
 
-    testCoverage.jacocoVersion = "0.8.10"
+    testCoverage.jacocoVersion = "0.8.11"
 }
 
 group = "de.peilicke.sascha"
