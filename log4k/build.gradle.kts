@@ -9,14 +9,11 @@ kotlin {
     androidTarget { publishAllLibraryVariants() }
     iosArm64()
     iosSimulatorArm64()
-    js {
-        nodejs()
-        compilations.all {
-            kotlinOptions.sourceMap = true
-            kotlinOptions.moduleKind = "umd"
-        }
-    }
+    js { nodejs() }
     jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
+    macosArm64()
+    tvosArm64()
+    watchosArm64()
 
     applyDefaultHierarchyTemplate()
 
