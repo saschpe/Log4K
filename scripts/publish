@@ -1,16 +1,10 @@
 #!/bin/bash
 #
-# Script to publish library in case a release commit is discovered
+# Script to publish a library in case a release commit is discovered
 #
 
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 . "${SCRIPT_DIR}/inc.functions.sh"
-
-# Constants
-SECRET_FILE=buildSrc/src/main/kotlin/Secrets.kt
-
-# Checks
-[[ -f ${SECRET_FILE} ]] || die "Publish requires credentials at '${SECRET_FILE}'"
 
 # Functions
 function is_release_commit() {
