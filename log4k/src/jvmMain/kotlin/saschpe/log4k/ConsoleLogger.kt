@@ -8,24 +8,8 @@ import java.util.logging.SimpleFormatter
 import java.util.logging.Logger as JavaLogger
 
 actual class ConsoleLogger : Logger() {
-    private val javaLogger = JavaLogger.getLogger(ConsoleLogger::class.java.name).apply {
-        level = Level.ALL
-        System.setProperty("java.util.logging.SimpleFormatter.format", "%1\$tF %1\$tT %5\$s %n")
-        addHandler(
-            ConsoleHandler().apply {
-                level = Level.ALL
-                formatter = SimpleFormatter()
-            },
-        )
-        useParentHandlers = false
-    }
-
     override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) {
-        val trace = Exception().stackTrace[5]
-        var logTag = tag
-        if (tag.isEmpty()) {
-            logTag = getTraceTag(trace)
-        }
+        val logTag = tag.ifEmpty { getTraceTag() }
 
         var fullMessage = "$message"
         throwable?.let { fullMessage = "$fullMessage\n${it.stackTraceString}" }
@@ -39,6 +23,18 @@ actual class ConsoleLogger : Logger() {
             Log.Level.Error -> javaLogger.severe(msg)
             Log.Level.Assert -> javaLogger.severe(msg)
         }
+    }
+
+    private fun getTraceTag(): String {
+        var trace = Exception().stackTrace[6]
+        var className = trace.className.split(".").last()
+
+        // Corner-case when the Log.log function is used instead of Log.debug, Log.ve
+        if (className == "NativeMethodAccessorImpl") {
+            trace = Exception().stackTrace[5]
+            className = trace.className.split(".").last()
+        }
+        return "$className.${trace.methodName}"
     }
 
     private val Throwable.stackTraceString
@@ -59,8 +55,17 @@ actual class ConsoleLogger : Logger() {
         Log.Level.Assert to "${AnsiColor.Magenta.value}Assert${AnsiColor.Reset.value}",
     )
 
-    private fun getTraceTag(trace: StackTraceElement): String {
-        val className = trace.className.split(".").last()
-        return "$className.${trace.methodName}"
+    companion object {
+        internal val javaLogger = JavaLogger.getLogger(ConsoleLogger::class.java.name).apply {
+            level = Level.ALL
+            System.setProperty("java.util.logging.SimpleFormatter.format", "%1\$tF %1\$tT %5\$s %n")
+            addHandler(
+                ConsoleHandler().apply {
+                    level = Level.ALL
+                    formatter = SimpleFormatter()
+                },
+            )
+            useParentHandlers = false
+        }
     }
 }

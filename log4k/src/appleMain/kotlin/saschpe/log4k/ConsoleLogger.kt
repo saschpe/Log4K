@@ -7,18 +7,15 @@ import platform.Foundation.NSThread
 actual class ConsoleLogger : Logger() {
     private val dateFormatter = NSDateFormatter().apply { dateFormat = "MM-dd HH:mm:ss.SSS" }
 
-    override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) {
-        val trace = NSThread.callStackSymbols()[5] as String
-        var logTag = tag
-        if (tag.isEmpty()) {
-            logTag = getTraceTag(trace)
-        }
-        println("${getCurrentTime()} ${levelMap[level]} $logTag: $message")
-    }
+    override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) =
+        println("${getCurrentTime()} ${levelMap[level]} ${tag.ifEmpty { getTraceTag() }}: $message")
 
     private fun getCurrentTime() = dateFormatter.stringFromDate(NSDate())
 
-    private fun getTraceTag(trace: String) = trace.split("\$").last().split(" ").first()
+    private fun getTraceTag(): String {
+        val trace = NSThread.callStackSymbols()[6] as String
+        return trace.split("\$").last().split(" ").first()
+    }
 
     private val levelMap: HashMap<Log.Level, String> = hashMapOf(
         Log.Level.Verbose to "Verbose",

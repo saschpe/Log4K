@@ -1,6 +1,7 @@
 package saschpe.log4k
 
-import testing.*
+import testing.StubLoggerWithMinimum
+import testing.TestLoggerTest
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue

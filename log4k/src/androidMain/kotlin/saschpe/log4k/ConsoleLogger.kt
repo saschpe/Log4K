@@ -4,12 +4,7 @@ import android.util.Log as AndroidLog
 
 actual class ConsoleLogger : Logger() {
     override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) {
-        val trace = Exception().stackTrace[5]
-        var logTag = tag
-        if (tag.isEmpty()) {
-            logTag = getTraceTag(trace)
-        }
-
+        val logTag = tag.ifEmpty { getTraceTag() }
         when (level) {
             Log.Level.Verbose -> AndroidLog.v(logTag, message, throwable)
             Log.Level.Debug -> AndroidLog.d(logTag, message, throwable)
@@ -20,8 +15,15 @@ actual class ConsoleLogger : Logger() {
         }
     }
 
-    private fun getTraceTag(trace: StackTraceElement): String {
-        val className = trace.className.split(".").last()
+    private fun getTraceTag(): String {
+        var trace = Exception().stackTrace[6]
+        var className = trace.className.split(".").last()
+
+        // Corner-case when the Log.log function is used instead of Log.debug, Log.ve
+        if (className == "NativeMethodAccessorImpl") {
+            trace = Exception().stackTrace[5]
+            className = trace.className.split(".").last()
+        }
         return "$className.${trace.methodName}"
     }
 }

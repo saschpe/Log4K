@@ -10,7 +10,7 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
     js { nodejs() }
-    jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
+    jvm()
     macosArm64()
     tvosArm64()
     watchosArm64()
@@ -18,7 +18,21 @@ kotlin {
     applyDefaultHierarchyTemplate()
 
     sourceSets {
-        commonTest.dependencies { implementation(kotlin("test")) }
+        commonTest.dependencies {
+            implementation(kotlin("test"))
+        }
+        jsTest.dependencies {
+            implementation(kotlin("test-js"))
+        }
+        jvmTest.dependencies {
+            implementation("io.mockk:mockk:1.13.10")
+        }
+        // https://kotlinlang.org/docs/multiplatform-android-layout.html#check-the-relationship-between-android-and-common-tests
+        val androidUnitTest by getting {
+            dependencies {
+                implementation("io.mockk:mockk-android:1.13.10")
+            }
+        }
     }
 }
 
