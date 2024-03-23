@@ -1,7 +1,6 @@
 package saschpe.log4k
 
 import testing.TestLoggerTest
-import testing.assertTestLogger
 import kotlin.test.Test
 
 internal expect val expectedListTag: String
