@@ -30,6 +30,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
       - name: Archive build artifacts
+        if: github.ref == 'refs/heads/main'
         uses: actions/upload-artifact@v3
         with:
           name: log4k_build
@@ -45,9 +46,10 @@ jobs:
     if: github.ref == 'refs/heads/main'
     environment: Sonatype
     env:
+      ORG_GRADLE_PROJECT_sonatypePass: ${{ secrets.SONATYPE_API_KEY }}
+      ORG_GRADLE_PROJECT_sonatypeUser: ${{ secrets.SONATYPE_USER }}
       SONATYPE_GPG_KEY: ${{ secrets.SONATYPE_GPG_KEY }}
       SONATYPE_GPG_KEY_PASSWORD: ${{ secrets.SONATYPE_GPG_KEY_PASSWORD }}
-      SECRETS_KEY: ${{ secrets.SECRETS_KEY }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 17
@@ -63,5 +65,4 @@ jobs:
         shell: bash
         run: |
           brew install gnupg
-          ./scripts/secret decrypt --password ${SECRETS_KEY}
           ./scripts/publish
