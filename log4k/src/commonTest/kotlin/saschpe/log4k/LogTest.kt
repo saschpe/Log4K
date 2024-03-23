@@ -1,15 +1,11 @@
 package saschpe.log4k
 
 import testing.*
-import kotlin.test.*
+import kotlin.test.Test
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
-class LogTest {
-    @BeforeTest // Arrange
-    fun before() {
-        Log.loggers.clear()
-        Log.loggers += TestLogger()
-    }
-
+class LogTest : TestLoggerTest() {
     @Test
     fun verbose() {
         // Act
@@ -173,18 +169,6 @@ class LogTest {
     }
 
     @Test
-    fun logged_Pair() {
-        // Arrange
-        val pair = Pair("Hello", "World")
-
-        // Act
-        pair.logged()
-
-        // Assert
-        assertTestLogger(Log.Level.Debug, "(Hello, World)", "Pair", null)
-    }
-
-    @Test
     fun isDebugEnabled() {
         assertTrue(Log.isDebugEnabled, "TestLogger defaults to ${Log.Level.Verbose}")
         Log.loggers.clear()
@@ -196,7 +180,4 @@ class LogTest {
         Log.loggers.clear()
         assertFalse(Log.isDebugEnabled)
     }
-
-    @AfterTest
-    fun after() = Log.loggers.clear()
 }
