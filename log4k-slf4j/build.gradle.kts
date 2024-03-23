@@ -7,7 +7,7 @@ plugins {
 
 kotlin {
     androidTarget { publishAllLibraryVariants() }
-    ios()
+    iosArm64()
     iosSimulatorArm64()
     js {
         nodejs()
@@ -18,19 +18,13 @@ kotlin {
     }
     jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
 
-    sourceSets["androidMain"].dependencies {
-        implementation("org.slf4j:slf4j-api:1.7.36")
-    }
-    sourceSets["commonMain"].dependencies {
-        implementation(project(":log4k"))
-    }
-    sourceSets["commonTest"].dependencies {
-        implementation(kotlin("test"))
-    }
-    sourceSets["iosSimulatorArm64Main"].dependsOn(sourceSets["iosMain"])
-    sourceSets["iosSimulatorArm64Test"].dependsOn(sourceSets["iosTest"])
-    sourceSets["jvmMain"].dependencies {
-        implementation("org.slf4j:slf4j-api:1.7.36")
+    applyDefaultHierarchyTemplate()
+
+    sourceSets {
+        commonMain.dependencies { implementation(project(":log4k")) }
+        commonTest.dependencies { implementation(kotlin("test")) }
+        androidMain.dependencies { implementation("org.slf4j:slf4j-api:1.7.36") }
+        jvmMain.dependencies { implementation("org.slf4j:slf4j-api:1.7.36") }
     }
 }
 

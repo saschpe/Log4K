@@ -7,7 +7,7 @@ plugins {
 
 kotlin {
     androidTarget { publishAllLibraryVariants() }
-    ios()
+    iosArm64()
     iosSimulatorArm64()
     js {
         nodejs()
@@ -18,11 +18,11 @@ kotlin {
     }
     jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
 
-    sourceSets["commonTest"].dependencies {
-        implementation(kotlin("test"))
+    applyDefaultHierarchyTemplate()
+
+    sourceSets {
+        commonTest.dependencies { implementation(kotlin("test")) }
     }
-    sourceSets["iosSimulatorArm64Main"].dependsOn(sourceSets["iosMain"])
-    sourceSets["iosSimulatorArm64Test"].dependsOn(sourceSets["iosTest"])
 }
 
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
