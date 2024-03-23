@@ -8,7 +8,7 @@ abstract class Logger {
         Magenta("\u001B[35m"),
         Red("\u001B[31m"),
         White("\u001B[37m"),
-        Yellow("\u001B[33m")
+        Yellow("\u001B[33m"),
     }
 
     var minimumLogLevel = Log.Level.Verbose

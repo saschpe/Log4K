@@ -3,6 +3,11 @@ pluginManagement {
         gradlePluginPortal()
         google()
     }
+
+    plugins {
+        kotlin("multiplatform") version "1.9.23"
+        id("com.android.library") version "8.2.2"
+    }
 }
 
 dependencyResolutionManagement {

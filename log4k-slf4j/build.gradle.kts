@@ -7,7 +7,7 @@ plugins {
 
 kotlin {
     androidTarget { publishAllLibraryVariants() }
-    ios()
+    iosArm64()
     iosSimulatorArm64()
     js {
         nodejs()
@@ -18,51 +18,34 @@ kotlin {
     }
     jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
 
-    sourceSets["androidMain"].dependencies {
-        implementation("org.slf4j:slf4j-api:1.7.36")
-    }
-    sourceSets["commonMain"].dependencies {
-        implementation(project(":log4k"))
-    }
-    sourceSets["commonTest"].dependencies {
-        implementation(kotlin("test"))
-    }
-    sourceSets["iosSimulatorArm64Main"].dependsOn(sourceSets["iosMain"])
-    sourceSets["iosSimulatorArm64Test"].dependsOn(sourceSets["iosTest"])
-    sourceSets["jvmMain"].dependencies {
-        implementation("org.slf4j:slf4j-api:1.7.36")
-    }
+    applyDefaultHierarchyTemplate()
 
-    targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetWithSimulatorTests::class.java) {
-        testRuns["test"].deviceId = "iPhone 14"
+    sourceSets {
+        commonMain.dependencies { implementation(project(":log4k")) }
+        commonTest.dependencies { implementation(kotlin("test")) }
+        androidMain.dependencies { implementation("org.slf4j:slf4j-api:1.7.36") }
+        jvmMain.dependencies { implementation("org.slf4j:slf4j-api:1.7.36") }
     }
 }
 
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+
 android {
-    buildToolsVersion = "33.0.0"
-    compileSdk = 33
+    namespace = "saschpe.log4k.slf4j"
 
     defaultConfig {
+        compileSdk = 33
         minSdk = 17
-        targetSdk = 33
     }
 
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-
-    testCoverage.jacocoVersion = "0.8.8"
+    testCoverage.jacocoVersion = "0.8.10"
 }
 
 group = "de.peilicke.sascha"
 version = "1.2.3"
 
-val javadocJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("javadoc")
-}
-
 publishing {
     publications.withType<MavenPublication> {
-        artifact(javadocJar.get())
-
         pom {
             name.set("Log4K-SLF4J")
             description.set("Lightweight logging library for Kotlin/Multiplatform - SLF4J integration. Supports Android, iOS, JavaScript and plain JVM environments.")

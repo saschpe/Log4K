@@ -7,7 +7,7 @@ plugins {
 
 kotlin {
     androidTarget { publishAllLibraryVariants() }
-    ios()
+    iosArm64()
     iosSimulatorArm64()
     js {
         nodejs()
@@ -18,42 +18,31 @@ kotlin {
     }
     jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
 
-    sourceSets["commonTest"].dependencies {
-        implementation(kotlin("test"))
-    }
-    sourceSets["iosSimulatorArm64Main"].dependsOn(sourceSets["iosMain"])
-    sourceSets["iosSimulatorArm64Test"].dependsOn(sourceSets["iosTest"])
+    applyDefaultHierarchyTemplate()
 
-    targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetWithSimulatorTests::class.java) {
-        testRuns["test"].deviceId = "iPhone 14"
+    sourceSets {
+        commonTest.dependencies { implementation(kotlin("test")) }
     }
 }
 
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+
 android {
-    buildToolsVersion = "33.0.0"
-    compileSdk = 33
+    namespace = "saschpe.log4k"
 
     defaultConfig {
+        compileSdk = 33
         minSdk = 17
-        targetSdk = 33
     }
 
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-
-    testCoverage.jacocoVersion = "0.8.8"
+    testCoverage.jacocoVersion = "0.8.10"
 }
 
 group = "de.peilicke.sascha"
 version = "1.2.3"
 
-val javadocJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("javadoc")
-}
-
 publishing {
     publications.withType<MavenPublication> {
-        artifact(javadocJar.get())
-
         pom {
             name.set("Log4K")
             description.set("Lightweight logging library for Kotlin/Multiplatform. Supports Android, iOS, JavaScript and plain JVM environments.")

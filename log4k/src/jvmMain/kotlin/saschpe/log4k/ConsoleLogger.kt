@@ -15,7 +15,7 @@ actual class ConsoleLogger : Logger() {
             ConsoleHandler().apply {
                 level = Level.ALL
                 formatter = SimpleFormatter()
-            }
+            },
         )
         useParentHandlers = false
     }
@@ -56,7 +56,7 @@ actual class ConsoleLogger : Logger() {
         Log.Level.Info to "${AnsiColor.Green.value}Info${AnsiColor.Reset.value}",
         Log.Level.Warning to "${AnsiColor.Yellow.value}Warn${AnsiColor.Reset.value}",
         Log.Level.Error to "${AnsiColor.Red.value}Error${AnsiColor.Reset.value}",
-        Log.Level.Assert to "${AnsiColor.Magenta.value}Assert${AnsiColor.Reset.value}"
+        Log.Level.Assert to "${AnsiColor.Magenta.value}Assert${AnsiColor.Reset.value}",
     )
 
     private fun getTraceTag(trace: StackTraceElement): String {
