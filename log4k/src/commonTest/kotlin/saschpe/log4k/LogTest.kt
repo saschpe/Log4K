@@ -20,6 +20,15 @@ class LogTest {
     }
 
     @Test
+    fun verbose_defaults() {
+        // Act
+        Log.verbose()
+
+        // Assert
+        assertTestLogger(Log.Level.Verbose, "", "", null)
+    }
+
+    @Test
     fun verbose_withLambda() {
         // Act
         Log.verbose(TEST_THROWABLE, TEST_TAG) { TEST_MESSAGE }
@@ -35,6 +44,15 @@ class LogTest {
 
         // Assert
         assertTestLogger(Log.Level.Info)
+    }
+
+    @Test
+    fun info_defaults() {
+        // Act
+        Log.info()
+
+        // Assert
+        assertTestLogger(Log.Level.Info, "", "", null)
     }
 
     @Test
@@ -56,6 +74,15 @@ class LogTest {
     }
 
     @Test
+    fun debug_defaults() {
+        // Act
+        Log.debug()
+
+        // Assert
+        assertTestLogger(Log.Level.Debug, "", "", null)
+    }
+
+    @Test
     fun debug_withLambda() {
         // Act
         Log.debug(TEST_THROWABLE, TEST_TAG) { TEST_MESSAGE }
@@ -71,6 +98,15 @@ class LogTest {
 
         // Assert
         assertTestLogger(Log.Level.Warning)
+    }
+
+    @Test
+    fun warn_defaults() {
+        // Act
+        Log.warn()
+
+        // Assert
+        assertTestLogger(Log.Level.Warning, "", "", null)
     }
 
     @Test
@@ -92,6 +128,15 @@ class LogTest {
     }
 
     @Test
+    fun error_defaults() {
+        // Act
+        Log.error()
+
+        // Assert
+        assertTestLogger(Log.Level.Error, "", "", null)
+    }
+
+    @Test
     fun error_withLambda() {
         // Act
         Log.error(TEST_THROWABLE, TEST_TAG) { TEST_MESSAGE }
@@ -107,6 +152,15 @@ class LogTest {
 
         // Assert
         assertTestLogger(Log.Level.Assert)
+    }
+
+    @Test
+    fun assert_defaults() {
+        // Act
+        Log.assert()
+
+        // Assert
+        assertTestLogger(Log.Level.Assert, "", "", null)
     }
 
     @Test

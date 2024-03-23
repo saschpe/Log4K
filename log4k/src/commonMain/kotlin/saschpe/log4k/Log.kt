@@ -22,7 +22,7 @@ object Log {
 
     @JvmOverloads
     @JvmStatic
-    fun verbose(message: String, throwable: Throwable? = null, tag: String = "") =
+    fun verbose(message: String = "", throwable: Throwable? = null, tag: String = "") =
         log(Level.Verbose, tag, throwable, message)
 
     @JvmOverloads
@@ -32,7 +32,7 @@ object Log {
 
     @JvmOverloads
     @JvmStatic
-    fun info(message: String, throwable: Throwable? = null, tag: String = "") =
+    fun info(message: String = "", throwable: Throwable? = null, tag: String = "") =
         log(Level.Info, tag, throwable, message)
 
     @JvmOverloads
@@ -42,7 +42,7 @@ object Log {
 
     @JvmOverloads
     @JvmStatic
-    fun debug(message: String, throwable: Throwable? = null, tag: String = "") =
+    fun debug(message: String = "", throwable: Throwable? = null, tag: String = "") =
         log(Level.Debug, tag, throwable, message)
 
     @JvmOverloads
@@ -52,7 +52,7 @@ object Log {
 
     @JvmOverloads
     @JvmStatic
-    fun warn(message: String, throwable: Throwable? = null, tag: String = "") =
+    fun warn(message: String = "", throwable: Throwable? = null, tag: String = "") =
         log(Level.Warning, tag, throwable, message)
 
     @JvmOverloads
@@ -62,7 +62,7 @@ object Log {
 
     @JvmOverloads
     @JvmStatic
-    fun error(message: String, throwable: Throwable? = null, tag: String = "") =
+    fun error(message: String = "", throwable: Throwable? = null, tag: String = "") =
         log(Level.Error, tag, throwable, message)
 
     @JvmOverloads
@@ -72,7 +72,7 @@ object Log {
 
     @JvmOverloads
     @JvmStatic
-    fun assert(message: String, throwable: Throwable? = null, tag: String = "") =
+    fun assert(message: String = "", throwable: Throwable? = null, tag: String = "") =
         log(Level.Assert, tag, throwable, message)
 
     @JvmOverloads
