@@ -2,6 +2,7 @@ package saschpe.log4k
 
 import testing.TestLoggerTest
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 internal expect val expectedListTag: String
 internal expect val expectedMapTag: String
@@ -25,10 +26,11 @@ class LoggedTest : TestLoggerTest() {
         val list = listOf("Hello", "World")
 
         // Act
-        list.logged()
+        val returned: List<String> = list.logged()
 
         // Assert
-        assertTestLogger(Log.Level.Debug, "[Hello, World]", expectedListTag, null)
+        assertTestLogger(Log.Level.Debug, "[Hello, World]", "List", null)
+        assertEquals(list, returned)
     }
 
     @Test
@@ -40,6 +42,6 @@ class LoggedTest : TestLoggerTest() {
         map.logged()
 
         // Assert
-        assertTestLogger(Log.Level.Debug, "{Hello=World}", expectedMapTag, null)
+        assertTestLogger(Log.Level.Debug, "{Hello=World}", "Map", null)
     }
 }

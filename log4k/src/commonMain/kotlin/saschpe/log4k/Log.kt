@@ -9,6 +9,14 @@ import kotlin.native.concurrent.ThreadLocal
 object Log {
     enum class Level { Verbose, Debug, Info, Warning, Error, Assert }
 
+    /**
+     * List of logging "backends" to use, defaults to a [ConsoleLogger].
+     *
+     * You can add additional (custom) loggers, like a [FileLogger] with default parameters:
+     * ```kotlin
+     * Log.loggers += FileLogger()
+     * ```
+     */
     @JvmField
     val loggers = mutableListOf<Logger>(ConsoleLogger())
 
@@ -86,5 +94,14 @@ object Log {
         loggers.forEach { it.log(priority, tag, message, throwable) }
 }
 
-fun Any.logged(level: Log.Level = Log.Level.Debug) =
-    apply { Log.log(level, message = toString(), tag = this::class.simpleName ?: "") }
+/**
+ * Log any Kotlin object, like:
+ *
+ * ```kotlin
+ * list(1,2,3).logged()
+ * mapOf("left" to "right").logged()
+ * Pair("Log4k", "rocks!").logged()
+ * ```
+ */
+inline fun <reified T : Any> T.logged(level: Log.Level = Log.Level.Debug): T =
+    apply { Log.log(level, message = toString(), tag = T::class.simpleName ?: "") }
