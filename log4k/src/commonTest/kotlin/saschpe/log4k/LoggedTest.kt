@@ -4,9 +4,6 @@ import testing.TestLoggerTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-internal expect val expectedListTag: String
-internal expect val expectedMapTag: String
-
 class LoggedTest : TestLoggerTest() {
     @Test
     fun logged_Pair() {
