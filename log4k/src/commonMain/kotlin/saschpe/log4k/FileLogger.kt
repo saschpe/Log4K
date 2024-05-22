@@ -17,33 +17,29 @@ internal expect fun limitFolderToFilesByCreationTime(path: String, limit: Int)
  *
  * @param rotate Log file rotation, defaults to [Rotate.Daily]
  * @param limit Log file retention limit, defaults to [Limit.Files]
- * @param logPath Log file path, defaults to platform-specific temporary directory [defaultLogPath]
+ * @param logPath Log file path, defaults to a platform-specific temporary directory
  */
 class FileLogger(
     private val rotate: Rotate = Rotate.Daily,
     private val limit: Limit = Limit.Files(10),
-    private val logPath: Path = defaultLogPath,
+    private val logPath: String? = null,
 ) : Logger() {
-    constructor(
-        rotation: Rotate = Rotate.Daily,
-        limit: Limit = Limit.Files(),
-        logPath: String,
-    ) : this(rotation, limit, Path(logPath))
+    private val logPathInternal = logPath?.let { Path(it) } ?: defaultLogPath
 
     init {
-        SystemFileSystem.createDirectories(logPath)
+        SystemFileSystem.createDirectories(logPathInternal)
     }
 
     override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) {
         val logTag = tag.ifEmpty { getTraceTag() }
-        SystemFileSystem.sink(rotate.logFile(logPath), append = true).buffered().apply {
+        SystemFileSystem.sink(rotate.logFile(logPathInternal), append = true).buffered().apply {
             writeString("${level.name.first()}/$logTag: $message")
             throwable?.let { writeString(" $throwable") }
             writeString("\n")
             rotate.lineWritten()
             flush()
         }
-        limit.enforce(logPath)
+        limit.enforce(logPathInternal)
     }
 
     private fun getTraceTag(): String = try {

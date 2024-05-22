@@ -55,7 +55,7 @@ class FileLoggerTest {
     @Test
     fun log_rotate_after_9_lines() {
         // Arrange
-        val logger = FileLogger(rotation = TEST_ROTATE_AFTER_9, logPath = testLogPathString)
+        val logger = FileLogger(rotate = TEST_ROTATE_AFTER_9, logPath = testLogPathString)
 
         // Act
         logger.testMessages()
@@ -74,7 +74,7 @@ class FileLoggerTest {
     @Ignore // The class works, but testing async I/O is hard across all platforms
     fun log_rotate_after_5_lines() {
         // Arrange
-        val logger = FileLogger(rotate = TEST_ROTATE_AFTER_5, logPath = testLogPath)
+        val logger = FileLogger(rotate = TEST_ROTATE_AFTER_5, logPath = testLogPathString)
 
         // Act
         logger.testMessages()
@@ -93,7 +93,7 @@ class FileLoggerTest {
     @Test
     fun log_rotate_daily() {
         // Arrange
-        val logger = FileLogger(rotate = Rotate.Daily, logPath = testLogPath)
+        val logger = FileLogger(rotate = Rotate.Daily, logPath = testLogPathString)
 
         // Act
         logger.testMessages()
@@ -112,7 +112,7 @@ class FileLoggerTest {
     @Test
     fun log_rotate_never() {
         // Arrange
-        val logger = FileLogger(rotate = Rotate.Never, logPath = testLogPath)
+        val logger = FileLogger(rotate = Rotate.Never, logPath = testLogPathString)
 
         // Act
         logger.testMessages()
@@ -134,7 +134,7 @@ class FileLoggerTest {
     fun log_limit_not() {
         // Arrange
         val rotate = Rotate.After(7)
-        val logger = FileLogger(rotate, Limit.Not, testLogPath)
+        val logger = FileLogger(rotate, Limit.Not, testLogPathString)
 
         // Act
         logger.testMessages()
@@ -150,7 +150,7 @@ class FileLoggerTest {
     fun log_limit_to_7_files() {
         // Arrange
         val rotate = Rotate.After(3)
-        val logger = FileLogger(rotate, Limit.Files(7), testLogPath)
+        val logger = FileLogger(rotate, Limit.Files(7), testLogPathString)
 
         // Act
         logger.testMessages()
@@ -165,7 +165,7 @@ class FileLoggerTest {
     fun log_limit_to_4_files() {
         // Arrange
         val rotate = Rotate.After(5)
-        val logger = FileLogger(rotate, Limit.Files(4), testLogPath)
+        val logger = FileLogger(rotate, Limit.Files(4), testLogPathString)
 
         // Act
         logger.testMessages()
