@@ -1,6 +1,5 @@
 package saschpe.log4k
 
-import kotlinx.io.files.Path
 import saschpe.log4k.FileLogger.Rotate
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -23,7 +22,6 @@ class MultipleLoggersTest {
     }
 
     companion object {
-        private val TEST_LOG_PATH_STRING = "build/test/${MultipleLoggersTest::class.simpleName}"
-        private val TEST_LOG_PATH = Path(TEST_LOG_PATH_STRING)
+        private val TEST_LOG_PATH = "build/test/${MultipleLoggersTest::class.simpleName}"
     }
 }
