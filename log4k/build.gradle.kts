@@ -20,25 +20,25 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0-RC.2")
-            implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.3.3")
+            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
+            implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.3.5")
         }
         commonTest.dependencies {
             implementation(kotlin("test"))
         }
         jsMain.dependencies {
-            implementation("org.jetbrains.kotlin-wrappers:kotlin-node:20.11.30-pre.738")
+            implementation("org.jetbrains.kotlin-wrappers:kotlin-node:20.11.30-pre.751")
         }
         jsTest.dependencies {
             implementation(kotlin("test-js"))
         }
         jvmTest.dependencies {
-            implementation("io.mockk:mockk:1.13.10")
+            implementation("io.mockk:mockk:1.13.11")
         }
         // https://kotlinlang.org/docs/multiplatform-android-layout.html#check-the-relationship-between-android-and-common-tests
         val androidUnitTest by getting {
             dependencies {
-                implementation("io.mockk:mockk-android:1.13.10")
+                implementation("io.mockk:mockk-android:1.13.11")
             }
         }
     }
