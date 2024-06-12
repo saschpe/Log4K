@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 - Use more unique (internal) content provider authorities. Avoids potential clashes in apps integrating the library
+- Dependency update:
+  - [Gradle 8.8](https://docs.gradle.org/8.8/release-notes.html)
 
 ## [1.3.1] - 2024-05-22
 - FileLogger: Remove constructor with `kotlinx.io.files.Path`
