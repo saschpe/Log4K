@@ -9,6 +9,4 @@ internal actual fun deleteRecursively(path: String) {
     File(path).deleteRecursively()
 }
 
-internal actual fun filesInFolder(path: String): Int {
-    return File(path).listFiles()?.size ?: 0
-}
+internal actual fun filesInFolder(path: String): Int = File(path).listFiles()?.size ?: 0

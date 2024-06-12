@@ -40,7 +40,7 @@ Log.error("Oops!")
 Log.assert("Something went wrong!", throwable)
 ```
 
-or, if you prefer:
+Or, if you prefer:
 
 ```kotlin
 Log.verbose { "FYI" }
@@ -170,8 +170,8 @@ val httpClient = HttpClient(CIO) {
 
 ## Users
 
-- [Alpha+ Player - Unofficial player for Soma FM](https://play.google.com/store/apps/details?id=saschpe.alphaplus)
-- [GameOn - Get games on sale](https://play.google.com/store/apps/details?id=saschpe.gameon)
+- [Alpha+ Player — Unofficial player for Soma FM](https://play.google.com/store/apps/details?id=saschpe.alphaplus)
+- [GameOn — Get games on sale](https://play.google.com/store/apps/details?id=saschpe.gameon)
 
 ## License
 
