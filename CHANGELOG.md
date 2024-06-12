@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Use more unique (internal) content provider authorities. Avoids potential clashes in apps integrating the library
 
 ## [1.3.1] - 2024-05-22
 - FileLogger: Remove constructor with `kotlinx.io.files.Path`
@@ -44,7 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New library `log4k-slf4j`:
   - `SLF4JLogger`: Forwards log statements to [SLF4J](https://www.slf4j.org), which in turn allows to
-    use [Logback])(https://logback.qos.ch) as a backend.
+    use [Logback](https://logback.qos.ch) as a backend.
 
 ## [1.2.0] - 2022-07-11
 

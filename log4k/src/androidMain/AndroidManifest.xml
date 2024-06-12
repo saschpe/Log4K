@@ -4,7 +4,7 @@
     <application>
         <provider
             android:name=".internal.ContextProvider"
-            android:authorities="${applicationId}.context_provider"
+            android:authorities="${applicationId}.log4k.context_provider"
             android:exported="false" />
     </application>
 </manifest>
