@@ -5,7 +5,7 @@ import saschpe.log4k.Log
 import saschpe.log4k.Logger
 
 actual class SLF4JLogger : Logger() {
-    override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) =
+    actual override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) =
         LoggerFactory.getLogger(tag).run {
             when (level) {
                 Log.Level.Verbose -> trace(message, throwable)

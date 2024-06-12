@@ -21,13 +21,13 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
-            implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.3.5")
+            implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.4.0")
         }
         commonTest.dependencies {
             implementation(kotlin("test"))
         }
         jsMain.dependencies {
-            implementation("org.jetbrains.kotlin-wrappers:kotlin-node:20.11.30-pre.751")
+            implementation("org.jetbrains.kotlin-wrappers:kotlin-node:20.11.30-pre.757")
         }
         jsTest.dependencies {
             implementation(kotlin("test-js"))
