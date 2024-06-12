@@ -7,11 +7,11 @@ import saschpe.log4k.Logger
 /**
  * Logger that forwards all log statements to SLF4J API.
  *
- * SLF4J in turn allows to use Logback or other implementations. This way, you can use the expressive `logback.xml`
- * configuration and appender.
+ * SLF4J in turn allows using Logback or other implementations.
+ * This way, you can use the expressive `logback.xml` configuration and appender.
  */
 actual class SLF4JLogger : Logger() {
-    override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) =
+    actual override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) =
         LoggerFactory.getLogger(tag).run {
             when (level) {
                 Log.Level.Verbose -> trace(message, throwable)

@@ -3,7 +3,7 @@ package saschpe.log4k
 import android.util.Log as AndroidLog
 
 actual class ConsoleLogger : Logger() {
-    override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) {
+    actual override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) {
         val logTag = tag.ifEmpty { getTraceTag() }
         when (level) {
             Log.Level.Verbose -> AndroidLog.v(logTag, message, throwable)

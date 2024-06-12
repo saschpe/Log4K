@@ -7,7 +7,7 @@ import platform.Foundation.NSThread
 actual class ConsoleLogger : Logger() {
     private val dateFormatter = NSDateFormatter().apply { dateFormat = "MM-dd HH:mm:ss.SSS" }
 
-    override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) =
+    actual override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) =
         println("${getCurrentTime()} ${levelMap[level]} ${tag.ifEmpty { getTraceTag() }}: $message")
 
     private fun getCurrentTime() = dateFormatter.stringFromDate(NSDate())

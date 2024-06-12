@@ -1,5 +1,6 @@
 package saschpe.log4k.slf4j
 
+import saschpe.log4k.Log
 import saschpe.log4k.Logger
 
 /**
@@ -14,4 +15,6 @@ import saschpe.log4k.Logger
  *
  * On JVM or Android, SLF4J is used for logging. On JS or Apple platforms, console logging is used internally.
  */
-expect class SLF4JLogger : Logger
+expect class SLF4JLogger : Logger {
+    override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?)
+}

@@ -8,7 +8,7 @@ import java.util.logging.SimpleFormatter
 import java.util.logging.Logger as JavaLogger
 
 actual class ConsoleLogger : Logger() {
-    override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) {
+    actual override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) {
         val logTag = tag.ifEmpty { getTraceTag() }
 
         var fullMessage = "$message"

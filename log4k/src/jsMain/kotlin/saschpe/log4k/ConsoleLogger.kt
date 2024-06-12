@@ -1,7 +1,7 @@
 package saschpe.log4k
 
 actual class ConsoleLogger : Logger() {
-    override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) {
+    actual override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) {
         var fullMessage = "$message"
         throwable?.let { fullMessage = "$fullMessage\n${it.message}" }
 
