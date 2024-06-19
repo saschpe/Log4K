@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.3.2] - 2024-06-19
 - Use more unique (internal) content provider authorities. Avoids potential clashes in apps integrating the library
 - Dependency update:
   - [Gradle 8.8](https://docs.gradle.org/8.8/release-notes.html)
