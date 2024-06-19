@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - [Kotlin 2.0.0](https://github.com/JetBrains/kotlin/releases/tag/v2.0.0)
   - [kotlinx-io 0.4.0](https://github.com/Kotlin/kotlinx-io/releases/tag/0.4.0)
   - [kotlin-wrappers pre.757](https://github.com/JetBrains/kotlin-wrappers/releases/tag/pre.757)
+- Add iosX64 build target
 
 ## [1.3.1] - 2024-05-22
 - FileLogger: Remove constructor with `kotlinx.io.files.Path`
