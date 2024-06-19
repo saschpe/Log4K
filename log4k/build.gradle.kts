@@ -9,6 +9,7 @@ plugins {
 kotlin {
     androidTarget { publishAllLibraryVariants() }
     iosArm64()
+    iosX64()
     iosSimulatorArm64()
     js { nodejs() }
     jvm()
@@ -58,7 +59,7 @@ android {
 }
 
 group = "de.peilicke.sascha"
-version = "1.3.1"
+version = "1.3.2"
 
 publishing {
     publications.withType<MavenPublication> {
