@@ -28,5 +28,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Log4K"
 
+include(":demo:compose")
 include(":log4k")
 include(":log4k-slf4j")
