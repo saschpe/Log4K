@@ -59,7 +59,7 @@ android {
 }
 
 group = "de.peilicke.sascha"
-version = "1.3.2"
+version = "1.3.3"
 
 publishing {
     publications.withType<MavenPublication> {
