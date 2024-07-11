@@ -1,8 +1,8 @@
 plugins {
-    kotlin("multiplatform")
-    id("com.android.library")
-    id("org.jetbrains.dokka")
     `maven-publish`
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.kotlin.multiplatform)
     signing
 }
 
@@ -21,22 +21,22 @@ kotlin {
     sourceSets {
         commonMain.dependencies { implementation(project(":log4k")) }
         commonTest.dependencies { implementation(kotlin("test")) }
-        androidMain.dependencies { implementation("org.slf4j:slf4j-api:1.7.36") }
-        jvmMain.dependencies { implementation("org.slf4j:slf4j-api:1.7.36") }
+        androidMain.dependencies { implementation(libs.slf4j.api) }
+        jvmMain.dependencies { implementation(libs.slf4j.api) }
     }
 }
 
-java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(libs.versions.java.get()))
 
 android {
     namespace = "saschpe.log4k.slf4j"
 
     defaultConfig {
-        compileSdk = 34
-        minSdk = 17
+        compileSdk = libs.versions.android.compileSdk.get().toInt()
+        minSdk = libs.versions.android.minSdk.get().toInt()
     }
 
-    testCoverage.jacocoVersion = "0.8.11"
+    testCoverage.jacocoVersion = libs.versions.jacoco.get()
 }
 
 group = "de.peilicke.sascha"

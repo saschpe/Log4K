@@ -1,6 +1,10 @@
 plugins {
-    id("com.diffplug.spotless") version "6.25.0"
-    id("com.github.ben-manes.versions") version "0.51.0"
+    alias(libs.plugins.android.application) apply false // Plugin does not allow being loaded multiple times
+    alias(libs.plugins.android.library) apply false // Plugin does not allow being loaded multiple times
+    alias(libs.plugins.kotlin.android) apply false // Plugin does not allow being loaded multiple times
+    alias(libs.plugins.kotlin.multiplatform) apply false // Plugin does not allow being loaded multiple times
+    alias(libs.plugins.spotless)
+    alias(libs.plugins.versions)
 }
 
 spotless {
@@ -10,10 +14,10 @@ spotless {
     }
     kotlin {
         target("**/*.kt")
-        ktlint("1.3.0").setEditorConfigPath(".editorconfig")
+        ktlint("1.3.0").setEditorConfigPath("${project.rootDir}/.editorconfig")
     }
     kotlinGradle {
-        ktlint("1.3.0").setEditorConfigPath(".editorconfig")
+        ktlint("1.3.0").setEditorConfigPath("${project.rootDir}/.editorconfig")
     }
 }
 
