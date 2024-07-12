@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.3] - 2024-07-11
+- iOS: Better log tag and use NSLog
+
 ## [1.3.2] - 2024-06-19
 - Use more unique (internal) content provider authorities. Avoids potential clashes in apps integrating the library
 - Dependency update:
