@@ -7,7 +7,7 @@ log4k-demo = "1.0.0"
 gradle-android = "8.5.2"
 jacoco = "0.8.11"
 java = "17"
-kotlin = "2.0.0"
+kotlin = "2.0.10"
 mockk = "1.13.11"
 
 [libraries]
