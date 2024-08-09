@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Dependency updates:
+  - [kotlinx-io 0.5.1](https://github.com/Kotlin/kotlinx-io/releases/tag/0.5.1)
+  - [kotlin-wrappers pre.788](https://github.com/JetBrains/kotlin-wrappers/releases/tag/pre.788)
+  - [androidx-activity-compose 1.9.1](https://developer.android.com/jetpack/androidx/releases/activity#1.9.1)
+  - [Kotlin 2.0.10](https://github.com/JetBrains/kotlin/releases/tag/v2.0.10)
+- Android: Relax minimum SDK requirement to API level 21
 
 ## [1.3.3] - 2024-07-11
 - iOS: Better log tag and use NSLog
