@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 - Dependency updates:
   - [kotlinx-io 0.5.1](https://github.com/Kotlin/kotlinx-io/releases/tag/0.5.1)
+  - [kotlin-wrappers pre.788](https://github.com/JetBrains/kotlin-wrappers/releases/tag/pre.788)
+
 
 ## [1.3.3] - 2024-07-11
 - iOS: Better log tag and use NSLog
