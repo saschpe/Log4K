@@ -1,6 +1,6 @@
 [versions]
 android-compileSdk = "34"
-android-minSdk = "24"
+android-minSdk = "21"
 android-targetSdk = "34"
 compose = "1.6.11"
 log4k-demo = "1.0.0"
