@@ -51,6 +51,7 @@ publishing {
             from(tasks.named("dokkaHtml"))
             archiveBaseName.set("${archiveBaseName.get()}-$name")
         })
+
         pom {
             name.set("Log4K-SLF4J")
             description.set("Lightweight logging library for Kotlin/Multiplatform - SLF4J integration. Supports Android, iOS, JavaScript and plain JVM environments.")

@@ -70,6 +70,7 @@ publishing {
             from(tasks.named("dokkaHtml"))
             archiveBaseName.set("${archiveBaseName.get()}-$name")
         })
+
         pom {
             name.set("Log4K")
             description.set("Lightweight logging library for Kotlin/Multiplatform. Supports Android, iOS, JavaScript and plain JVM environments.")

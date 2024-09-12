@@ -81,21 +81,19 @@ android {
         }
     }
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
         }
     }
     buildFeatures {
         compose = true
     }
-    compileOptions {
-        sourceCompatibility(libs.versions.java.get())
-        targetCompatibility(libs.versions.java.get())
-    }
     dependencies {
         debugImplementation(compose.uiTooling)
     }
 }
+
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(libs.versions.java.get()))
 
 compose.desktop {
     application {
