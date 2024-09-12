@@ -6,16 +6,16 @@ compose = "1.6.11"
 gradle-android = "8.5.2"
 jacoco = "0.8.11"
 java = "21"
-kotlin = "2.0.10"
+kotlin = "2.0.20"
 ktlint = "1.3.1"
 log4k-demo = "1.0.0"
 mockk = "1.13.12"
 
 [libraries]
-androidx-activity-compose = "androidx.activity:activity-compose:1.9.1"
-kotlin-wrappers = "org.jetbrains.kotlin-wrappers:kotlin-node:20.14.10-pre.788"
-kotlinx-datetime = "org.jetbrains.kotlinx:kotlinx-datetime:0.6.0"
-kotlinx-io = "org.jetbrains.kotlinx:kotlinx-io-core:0.5.1"
+androidx-activity-compose = "androidx.activity:activity-compose:1.9.2"
+kotlin-wrappers = "org.jetbrains.kotlin-wrappers:kotlin-node:22.5.4-pre.805"
+kotlinx-datetime = "org.jetbrains.kotlinx:kotlinx-datetime:0.6.1"
+kotlinx-io = "org.jetbrains.kotlinx:kotlinx-io-core:0.5.3"
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
 slf4j-api = "org.slf4j:slf4j-api:1.7.36"
