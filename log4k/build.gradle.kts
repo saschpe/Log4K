@@ -58,11 +58,11 @@ android {
     testCoverage.jacocoVersion = libs.versions.jacoco.get()
 }
 
-group = "de.peilicke.sascha"
-version = "1.3.4"
-
 publishing {
     publications.withType<MavenPublication> {
+        groupId = "de.peilicke.sascha"
+        version = "1.3.4"
+
         artifact(project.tasks.register("${name}DokkaJar", Jar::class) {
             group = JavaBasePlugin.DOCUMENTATION_GROUP
             description = "Assembles Kotlin docs with Dokka into a Javadoc jar"
