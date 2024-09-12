@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Dependency updates:
+  - [kotlinx-io 0.5.3](https://github.com/Kotlin/kotlinx-io/releases/tag/0.5.3)
+  - [kotlin-wrappers pre.805](https://github.com/JetBrains/kotlin-wrappers/releases/tag/pre.805)
+  - [androidx-activity-compose 1.9.2](https://developer.android.com/jetpack/androidx/releases/activity#1.9.2)
+  - [Kotlin 2.0.20](https://github.com/JetBrains/kotlin/releases/tag/v2.0.20)
 
 ## [1.3.4] - 2024-08-09
 - Dependency updates:
