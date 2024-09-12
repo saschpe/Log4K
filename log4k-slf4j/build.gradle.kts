@@ -42,7 +42,7 @@ android {
 publishing {
     publications.withType<MavenPublication> {
         groupId = "de.peilicke.sascha"
-        version = "1.3.4"
+        version = "1.3.5"
 
         artifact(project.tasks.register("${name}DokkaJar", Jar::class) {
             group = JavaBasePlugin.DOCUMENTATION_GROUP
