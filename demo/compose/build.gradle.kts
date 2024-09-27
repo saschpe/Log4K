@@ -64,10 +64,6 @@ android {
     namespace = "saschpe.log4k.demo"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
-//    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-//    sourceSets["main"].res.srcDirs("src/androidMain/res")
-//    sourceSets["main"].resources.srcDirs("src/commonMain/resources")
-
     defaultConfig {
         applicationId = "saschpe.log4k.demo"
         minSdk = libs.versions.android.minSdk.get().toInt()
