@@ -1,12 +1,12 @@
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import saschpe.log4k.FileLogger
-import saschpe.log4k.FileLogger.Limit
-import saschpe.log4k.FileLogger.Rotate
 import saschpe.log4k.Log
+import saschpe.log4k.slf4j.SLF4JLogger
 
 fun main() = application {
-    Log.loggers += FileLogger(rotate = Rotate.Daily, limit = Limit.Files(max = 5))
+    Log.loggers.clear()
+    Log.loggers += SLF4JLogger()
+    System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "debug")
     Log.debug { "Desktop main" }
 
     Window(
