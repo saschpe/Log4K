@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2024-09-27
+
 ## [1.3.5] - 2024-09-12
 - Dependency updates:
   - [kotlinx-io 0.5.3](https://github.com/Kotlin/kotlinx-io/releases/tag/0.5.3)
