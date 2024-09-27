@@ -10,6 +10,7 @@ kotlin = "2.0.20"
 ktlint = "1.3.1"
 log4k-demo = "1.0.0"
 mockk = "1.13.12"
+slf4j = "2.0.16"
 
 [libraries]
 androidx-activity-compose = "androidx.activity:activity-compose:1.9.2"
@@ -18,7 +19,8 @@ kotlinx-datetime = "org.jetbrains.kotlinx:kotlinx-datetime:0.6.1"
 kotlinx-io = "org.jetbrains.kotlinx:kotlinx-io-core:0.5.4"
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
-slf4j-api = "org.slf4j:slf4j-api:1.7.36"
+slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradle-android" }

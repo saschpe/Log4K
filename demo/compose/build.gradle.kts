@@ -47,6 +47,7 @@ kotlin {
         }
         commonMain.dependencies {
             implementation(project(":log4k"))
+            implementation(project(":log4k-slf4j"))
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material)
@@ -56,6 +57,7 @@ kotlin {
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
+            implementation(libs.slf4j.simple)
         }
     }
 }
@@ -70,11 +72,6 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = libs.versions.log4k.demo.get()
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
     }
     buildTypes {
         release {
