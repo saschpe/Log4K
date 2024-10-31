@@ -9,7 +9,9 @@ actual class ConsoleLogger : Logger() {
     private val dateFormatter = NSDateFormatter().apply { dateFormat = "MM-dd HH:mm:ss.SSS" }
 
     actual override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) =
-        NSLog("${getCurrentTime()} ${levelMap[level]} ${tag.ifEmpty { getTraceTag() }}: $message")
+        NSLog("${getCurrentTime()} ${levelMap[level]} ${tag.ifEmpty { getTraceTag() }}: %@",
+            message ?: ""
+        )
 
     private fun getCurrentTime() = dateFormatter.stringFromDate(NSDate())
 
