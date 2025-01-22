@@ -72,6 +72,7 @@ class FileLoggerTest {
     }
 
     @Ignore // The class works, but testing async I/O is hard across all platforms
+    @Test
     fun log_rotate_after_5_lines() {
         // Arrange
         val logger = FileLogger(rotate = TEST_ROTATE_AFTER_5, logPath = testLogPathString)
@@ -131,6 +132,7 @@ class FileLoggerTest {
     }
 
     @Ignore // The class works, but testing async I/O is hard across all platforms
+    @Test
     fun log_limit_not() {
         // Arrange
         val rotate = Rotate.After(7)
@@ -147,6 +149,7 @@ class FileLoggerTest {
     }
 
     @Ignore // The class works, but testing async I/O is hard across all platforms
+    @Test
     fun log_limit_to_7_files() {
         // Arrange
         val rotate = Rotate.After(3)
