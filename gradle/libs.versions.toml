@@ -32,4 +32,4 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kover = { id = "org.jetbrains.kotlinx.kover", version = "0.9.1" }
 spotless = { id = "com.diffplug.spotless", version = "7.0.2" }
-versions = { id = "com.github.ben-manes.versions", version = "0.51.0" }
+versions = { id = "com.github.ben-manes.versions", version = "0.52.0" }
