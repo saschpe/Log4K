@@ -15,7 +15,7 @@
 
 Lightweight logging library for Kotlin/Multiplatform. Supports Android, iOS, JavaScript and plain JVM environments.
 
-- **log4k**: Base library, provides infrastructure and console logging
+- **log4k**: Base library, provides infrastructure and logging to the console or files with configurable rotation and retention policies.
 - **log4k-slf4j**: Integration with [SLF4J](https://www.slf4j.org)
 
 ## Download
@@ -114,7 +114,7 @@ Log.loggers += FileLogger(rotate = Rotate.After(lines = 1000), logPath = "myLogP
 // Log with sensible defaults (daily, keep 10 files)
 Log.loggers += FileLogger()
 
-// On huge eternal log file:
+// One huge eternal log file:
 Log.loggers += FileLogger(rotate = Rotate.Never, limit = Limit.Not)
 ```
 
