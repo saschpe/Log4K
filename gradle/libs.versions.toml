@@ -16,7 +16,7 @@ slf4j = "2.0.16"
 androidx-activity-compose = "androidx.activity:activity-compose:1.9.2"
 kotlin-wrappers = "org.jetbrains.kotlin-wrappers:kotlin-node:22.10.2-pre.860"
 kotlinx-datetime = "org.jetbrains.kotlinx:kotlinx-datetime:0.6.2"
-kotlinx-io = "org.jetbrains.kotlinx:kotlinx-io-core:0.6.0"
+kotlinx-io = "org.jetbrains.kotlinx:kotlinx-io-core:0.7.0"
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
