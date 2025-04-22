@@ -3,7 +3,7 @@ android-compileSdk = "35"
 android-minSdk = "21"
 android-targetSdk = "35"
 compose = "1.7.3"
-gradle-android = "8.7.3"
+gradle-android = "8.9.2"
 jacoco = "0.8.11"
 java = "21"
 kotlin = "2.1.20"
@@ -14,7 +14,7 @@ slf4j = "2.0.17"
 
 [libraries]
 androidx-activity-compose = "androidx.activity:activity-compose:1.10.1"
-kotlin-wrappers = "org.jetbrains.kotlin-wrappers:kotlin-node:2025.4.15-22.13.10"
+kotlin-wrappers = "org.jetbrains.kotlin-wrappers:kotlin-node:2025.4.16-22.13.10"
 kotlinx-datetime = "org.jetbrains.kotlinx:kotlinx-datetime:0.6.2"
 kotlinx-io = "org.jetbrains.kotlinx:kotlinx-io-core:0.7.0"
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
