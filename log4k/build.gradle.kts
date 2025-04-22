@@ -36,11 +36,8 @@ kotlin {
         jvmTest.dependencies {
             implementation(libs.mockk)
         }
-        // https://kotlinlang.org/docs/multiplatform-android-layout.html#check-the-relationship-between-android-and-common-tests
-        val androidUnitTest by getting {
-            dependencies {
-                implementation(libs.mockk.android)
-            }
+        androidUnitTest.dependencies {
+            implementation(libs.mockk.android)
         }
     }
 }
