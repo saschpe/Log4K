@@ -2,7 +2,7 @@
 android-compileSdk = "35"
 android-minSdk = "21"
 android-targetSdk = "35"
-compose = "1.7.3"
+compose = "1.8.0"
 gradle-android = "8.9.2"
 jacoco = "0.8.11"
 java = "21"
