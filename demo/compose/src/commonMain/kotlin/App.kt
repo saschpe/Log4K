@@ -26,7 +26,7 @@ fun App() {
         Column(
             Modifier.fillMaxWidth().fillMaxHeight(),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.Center,
         ) {
             Button(onClick = { showContent = !showContent }) {
                 Text("Click and log me!")
