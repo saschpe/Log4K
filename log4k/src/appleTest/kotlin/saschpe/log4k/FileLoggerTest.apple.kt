@@ -12,5 +12,4 @@ internal actual fun deleteRecursively(path: String) {
 }
 
 @OptIn(ExperimentalForeignApi::class)
-internal actual fun filesInFolder(path: String): Int =
-    NSFileManager.defaultManager.contentsOfDirectoryAtPath(path, null)?.count() ?: 0
+internal actual fun filesInFolder(path: String): Int = NSFileManager.defaultManager.contentsOfDirectoryAtPath(path, null)?.count() ?: 0

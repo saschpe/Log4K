@@ -30,68 +30,55 @@ object Log {
 
     @JvmOverloads
     @JvmStatic
-    fun verbose(message: String = "", throwable: Throwable? = null, tag: String = "") =
-        log(Level.Verbose, tag, throwable, message)
+    fun verbose(message: String = "", throwable: Throwable? = null, tag: String = "") = log(Level.Verbose, tag, throwable, message)
 
     @JvmOverloads
     @JvmStatic
-    fun verbose(throwable: Throwable? = null, tag: String = "", message: () -> String) =
-        log(Level.Verbose, tag, throwable, message())
+    fun verbose(throwable: Throwable? = null, tag: String = "", message: () -> String) = log(Level.Verbose, tag, throwable, message())
 
     @JvmOverloads
     @JvmStatic
-    fun info(message: String = "", throwable: Throwable? = null, tag: String = "") =
-        log(Level.Info, tag, throwable, message)
+    fun info(message: String = "", throwable: Throwable? = null, tag: String = "") = log(Level.Info, tag, throwable, message)
 
     @JvmOverloads
     @JvmStatic
-    fun info(throwable: Throwable? = null, tag: String = "", message: () -> String) =
-        log(Level.Info, tag, throwable, message())
+    fun info(throwable: Throwable? = null, tag: String = "", message: () -> String) = log(Level.Info, tag, throwable, message())
 
     @JvmOverloads
     @JvmStatic
-    fun debug(message: String = "", throwable: Throwable? = null, tag: String = "") =
-        log(Level.Debug, tag, throwable, message)
+    fun debug(message: String = "", throwable: Throwable? = null, tag: String = "") = log(Level.Debug, tag, throwable, message)
 
     @JvmOverloads
     @JvmStatic
-    fun debug(throwable: Throwable? = null, tag: String = "", message: () -> String) =
-        log(Level.Debug, tag, throwable, message())
+    fun debug(throwable: Throwable? = null, tag: String = "", message: () -> String) = log(Level.Debug, tag, throwable, message())
 
     @JvmOverloads
     @JvmStatic
-    fun warn(message: String = "", throwable: Throwable? = null, tag: String = "") =
-        log(Level.Warning, tag, throwable, message)
+    fun warn(message: String = "", throwable: Throwable? = null, tag: String = "") = log(Level.Warning, tag, throwable, message)
 
     @JvmOverloads
     @JvmStatic
-    fun warn(throwable: Throwable? = null, tag: String = "", message: () -> String) =
-        log(Level.Warning, tag, throwable, message())
+    fun warn(throwable: Throwable? = null, tag: String = "", message: () -> String) = log(Level.Warning, tag, throwable, message())
 
     @JvmOverloads
     @JvmStatic
-    fun error(message: String = "", throwable: Throwable? = null, tag: String = "") =
-        log(Level.Error, tag, throwable, message)
+    fun error(message: String = "", throwable: Throwable? = null, tag: String = "") = log(Level.Error, tag, throwable, message)
 
     @JvmOverloads
     @JvmStatic
-    fun error(throwable: Throwable? = null, tag: String = "", message: () -> String) =
-        log(Level.Error, tag, throwable, message())
+    fun error(throwable: Throwable? = null, tag: String = "", message: () -> String) = log(Level.Error, tag, throwable, message())
 
     @JvmOverloads
     @JvmStatic
-    fun assert(message: String = "", throwable: Throwable? = null, tag: String = "") =
-        log(Level.Assert, tag, throwable, message)
+    fun assert(message: String = "", throwable: Throwable? = null, tag: String = "") = log(Level.Assert, tag, throwable, message)
 
     @JvmOverloads
     @JvmStatic
-    fun assert(throwable: Throwable? = null, tag: String = "", message: () -> String) =
-        log(Level.Assert, tag, throwable, message())
+    fun assert(throwable: Throwable? = null, tag: String = "", message: () -> String) = log(Level.Assert, tag, throwable, message())
 
     @JvmOverloads
     @JvmStatic
-    fun log(priority: Level, tag: String = "", throwable: Throwable? = null, message: String? = null) =
-        loggers.forEach { it.log(priority, tag, message, throwable) }
+    fun log(priority: Level, tag: String = "", throwable: Throwable? = null, message: String? = null) = loggers.forEach { it.log(priority, tag, message, throwable) }
 }
 
 /**
@@ -103,5 +90,4 @@ object Log {
  * Pair("Log4k", "rocks!").logged()
  * ```
  */
-inline fun <reified T : Any> T.logged(level: Log.Level = Log.Level.Debug): T =
-    apply { Log.log(level, message = toString(), tag = T::class.simpleName ?: "") }
+inline fun <reified T : Any> T.logged(level: Log.Level = Log.Level.Debug): T = apply { Log.log(level, message = toString(), tag = T::class.simpleName ?: "") }

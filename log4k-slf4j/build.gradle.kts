@@ -7,7 +7,7 @@ plugins {
 }
 
 kotlin {
-    androidTarget { publishAllLibraryVariants() }
+    androidTarget { publishLibraryVariants("debug", "release") }
     iosArm64()
     iosX64()
     iosSimulatorArm64()
@@ -43,13 +43,12 @@ android {
 publishing {
     publications.withType<MavenPublication> {
         groupId = "de.peilicke.sascha"
-        version = "1.4.1"
 
         artifact(project.tasks.register("${name}DokkaJar", Jar::class) {
             group = JavaBasePlugin.DOCUMENTATION_GROUP
             description = "Assembles Kotlin docs with Dokka into a Javadoc jar"
             archiveClassifier.set("javadoc")
-            from(tasks.named("dokkaHtml"))
+            from(tasks.named("dokkaGeneratePublicationHtml"))
             archiveBaseName.set("${archiveBaseName.get()}-$name")
         })
 

@@ -11,15 +11,14 @@ import saschpe.log4k.Logger
  * This way, you can use the expressive `logback.xml` configuration and appender.
  */
 actual class SLF4JLogger : Logger() {
-    actual override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) =
-        LoggerFactory.getLogger(tag).run {
-            when (level) {
-                Log.Level.Verbose -> trace(message, throwable)
-                Log.Level.Debug -> debug(message, throwable)
-                Log.Level.Info -> info(message, throwable)
-                Log.Level.Warning -> warn(message, throwable)
-                Log.Level.Error -> error(message, throwable)
-                Log.Level.Assert -> error(message, throwable)
-            }
+    actual override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) = LoggerFactory.getLogger(tag).run {
+        when (level) {
+            Log.Level.Verbose -> trace(message, throwable)
+            Log.Level.Debug -> debug(message, throwable)
+            Log.Level.Info -> info(message, throwable)
+            Log.Level.Warning -> warn(message, throwable)
+            Log.Level.Error -> error(message, throwable)
+            Log.Level.Assert -> error(message, throwable)
         }
+    }
 }
