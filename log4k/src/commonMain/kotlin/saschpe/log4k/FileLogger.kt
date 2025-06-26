@@ -1,13 +1,18 @@
+@file:OptIn(ExperimentalTime::class)
+
 package saschpe.log4k
 
-import kotlinx.datetime.*
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
 import kotlinx.datetime.format.char
+import kotlinx.datetime.toLocalDateTime
 import kotlinx.io.buffered
 import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
 import kotlinx.io.writeString
-import saschpe.log4k.FileLogger.Limit
-import saschpe.log4k.FileLogger.Rotate
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 
 internal expect val defaultLogPath: Path
 internal expect fun limitFolderToFilesByCreationTime(path: String, limit: Int)
@@ -47,7 +52,7 @@ class FileLogger(
         val callSiteCleaned = callSite.split(" ")[1].split("(").first()
         val kotlinPackageParts = callSiteCleaned.split(".")
         "${kotlinPackageParts[kotlinPackageParts.size - 2]}.${kotlinPackageParts.last()}"
-    } catch (e: Exception) {
+    } catch (_: Exception) {
         "XXX"
     }
 
@@ -88,7 +93,7 @@ class FileLogger(
             private val dateTimeFormat = LocalDateTime.Format {
                 year()
                 monthNumber()
-                dayOfMonth()
+                day()
                 char('-')
                 hour()
                 minute()

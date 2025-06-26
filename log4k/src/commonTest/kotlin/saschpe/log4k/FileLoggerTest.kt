@@ -1,6 +1,7 @@
+@file:OptIn(ExperimentalTime::class)
+
 package saschpe.log4k
 
-import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
@@ -12,6 +13,8 @@ import saschpe.log4k.FileLogger.Rotate
 import kotlin.random.Random
 import kotlin.random.nextUInt
 import kotlin.test.*
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 import kotlinx.io.files.SystemFileSystem as fileSystem
 
 internal expect val expectedExceptionPackage: String
