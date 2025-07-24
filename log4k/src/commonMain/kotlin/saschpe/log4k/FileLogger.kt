@@ -37,12 +37,12 @@ class FileLogger(
 
     override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) {
         val logTag = tag.ifEmpty { getTraceTag() }
-        SystemFileSystem.sink(rotate.logFile(logPathInternal), append = true).buffered().apply {
-            writeString("${level.name.first()}/$logTag: $message")
-            throwable?.let { writeString(" $throwable") }
-            writeString("\n")
+        SystemFileSystem.sink(rotate.logFile(logPathInternal), append = true).buffered().use { sink ->
+            sink.writeString("${level.name.first()}/$logTag: $message")
+            throwable?.let { sink.writeString(" $throwable") }
+            sink.writeString("\n")
             rotate.lineWritten()
-            flush()
+            sink.flush()
         }
         limit.enforce(logPathInternal)
     }
