@@ -9,7 +9,7 @@ java = "21"
 kotlin = "2.2.0"
 ktlint = "1.6.0"
 log4k-demo = "1.0.0"
-mockk = "1.14.4"
+mockk = "1.14.5"
 slf4j = "2.0.17"
 
 [libraries]
