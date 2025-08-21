@@ -7,6 +7,8 @@ plugins {
 }
 
 kotlin {
+    jvmToolchain(libs.versions.java.get().toInt())
+
     androidTarget { publishLibraryVariants("debug", "release") }
     iosArm64()
     iosX64()
@@ -26,8 +28,6 @@ kotlin {
         jvmMain.dependencies { implementation(libs.slf4j.api) }
     }
 }
-
-java.toolchain.languageVersion.set(JavaLanguageVersion.of(libs.versions.java.get()))
 
 android {
     namespace = "saschpe.log4k.slf4j"

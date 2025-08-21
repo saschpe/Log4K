@@ -6,17 +6,20 @@ plugins {
 }
 
 kotlin {
+    jvmToolchain(libs.versions.java.get().toInt())
+
     androidTarget()
     jvm("desktop")
-//    @OptIn(org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl::class)
+//    @OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
 //    wasmJs {
-//        moduleName = "log4kDemo"
+//        outputModuleName.set("log4kDemo")
 //        browser {
 //            commonWebpackConfig {
 //                outputFileName = "log4kDemo.js"
-//                devServer = (devServer
-//                    ?: org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig.DevServer()).apply {
+//                devServer = (devServer ?: org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig.DevServer()).apply {
 //                    static = (static ?: mutableListOf()).apply {
+//                        // Serve sources to debug inside a browser
+//                        add(project.rootDir.path)
 //                        add(project.projectDir.path)
 //                    }
 //                }
@@ -85,8 +88,6 @@ android {
         debugImplementation(compose.uiTooling)
     }
 }
-
-java.toolchain.languageVersion.set(JavaLanguageVersion.of(libs.versions.java.get()))
 
 compose.desktop {
     application {
