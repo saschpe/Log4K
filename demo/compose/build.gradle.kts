@@ -9,24 +9,7 @@ kotlin {
     jvmToolchain(libs.versions.java.get().toInt())
 
     androidTarget()
-    jvm("desktop")
-//    @OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
-//    wasmJs {
-//        outputModuleName.set("log4kDemo")
-//        browser {
-//            commonWebpackConfig {
-//                outputFileName = "log4kDemo.js"
-//                devServer = (devServer ?: org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig.DevServer()).apply {
-//                    static = (static ?: mutableListOf()).apply {
-//                        // Serve sources to debug inside a browser
-//                        add(project.rootDir.path)
-//                        add(project.projectDir.path)
-//                    }
-//                }
-//            }
-//        }
-//        binaries.executable()
-//    }
+    jvm()
 
     listOf(
         iosArm64(),
@@ -35,15 +18,12 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "Log4KDemo"
+            binaryOption("bundleId", "saschpe.log4k.demo")
             isStatic = true
         }
     }
 
-    applyDefaultHierarchyTemplate()
-
     sourceSets {
-        val desktopMain by getting
-
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
@@ -51,14 +31,14 @@ kotlin {
         commonMain.dependencies {
             implementation(project(":log4k"))
             implementation(project(":log4k-slf4j"))
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material)
-            implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            implementation(compose.foundation)
+            implementation(compose.material)
+            implementation(compose.runtime)
+            implementation(compose.ui)
         }
-        desktopMain.dependencies {
+        jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.slf4j.simple)
         }

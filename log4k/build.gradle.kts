@@ -11,15 +11,13 @@ kotlin {
 
     androidTarget { publishLibraryVariants("debug", "release") }
     iosArm64()
-    iosX64()
     iosSimulatorArm64()
+    iosX64()
     js { nodejs() }
     jvm()
     macosArm64()
     tvosArm64()
     watchosArm64()
-
-    applyDefaultHierarchyTemplate()
 
     sourceSets {
         commonMain.dependencies {
