@@ -18,6 +18,7 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "Log4KDemo"
+            binaryOption("bundleId", "saschpe.log4k.demo")
             isStatic = true
         }
     }
