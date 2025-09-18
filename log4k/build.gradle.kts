@@ -19,8 +19,6 @@ kotlin {
     tvosArm64()
     watchosArm64()
 
-    applyDefaultHierarchyTemplate()
-
     sourceSets {
         commonMain.dependencies {
             implementation(libs.kotlinx.datetime)

@@ -23,8 +23,6 @@ kotlin {
         }
     }
 
-    applyDefaultHierarchyTemplate()
-
     sourceSets {
         androidMain.dependencies {
             implementation(compose.preview)
