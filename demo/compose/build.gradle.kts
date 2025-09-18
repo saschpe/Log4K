@@ -32,12 +32,12 @@ kotlin {
         commonMain.dependencies {
             implementation(project(":log4k"))
             implementation(project(":log4k-slf4j"))
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material)
-            implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            implementation(compose.foundation)
+            implementation(compose.material)
+            implementation(compose.runtime)
+            implementation(compose.ui)
         }
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
