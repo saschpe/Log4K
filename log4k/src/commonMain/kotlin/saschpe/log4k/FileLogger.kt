@@ -1,4 +1,3 @@
-@file:OptIn(ExperimentalTime::class)
 
 package saschpe.log4k
 
@@ -24,11 +23,13 @@ internal expect fun limitFolderToFilesByCreationTime(path: String, limit: Int)
  * @param limit Log file retention limit, defaults to [Limit.Files]
  * @param logPath Log file path, defaults to a platform-specific temporary directory
  */
+@OptIn(ExperimentalTime::class)
 class FileLogger(
     private val rotate: Rotate = Rotate.Daily,
     private val limit: Limit = Limit.Files(10),
     private val logPath: String? = null,
 ) : Logger() {
+    var clock: Clock = Clock.System // TODO: Pass clock as constructor parameter once @ExperimentalTime is gone
     private val logPathInternal = logPath?.let { Path(it) } ?: defaultLogPath
 
     init {
@@ -38,7 +39,7 @@ class FileLogger(
     override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) {
         val logTag = tag.ifEmpty { getTraceTag() }
         SystemFileSystem.sink(rotate.logFile(logPathInternal), append = true).buffered().use { sink ->
-            sink.writeString("${level.name.first()}/$logTag: $message")
+            sink.writeString("${clock.now()} ${level.name.first()}/$logTag: $message")
             throwable?.let { sink.writeString(" $throwable") }
             sink.writeString("\n")
             rotate.lineWritten()

@@ -15,6 +15,7 @@ import kotlin.random.nextUInt
 import kotlin.test.*
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 import kotlinx.io.files.SystemFileSystem as fileSystem
 
 internal expect val expectedExceptionPackage: String
@@ -58,7 +59,7 @@ class FileLoggerTest {
     @Test
     fun log_rotate_after_9_lines() {
         // Arrange
-        val logger = FileLogger(rotate = TEST_ROTATE_AFTER_9, logPath = testLogPathString)
+        val logger = FileLogger(rotate = TEST_ROTATE_AFTER_9, logPath = testLogPathString).apply { clock = TEST_CLOCK }
 
         // Act
         logger.testMessages()
@@ -78,7 +79,7 @@ class FileLoggerTest {
     @Test
     fun log_rotate_after_5_lines() {
         // Arrange
-        val logger = FileLogger(rotate = TEST_ROTATE_AFTER_5, logPath = testLogPathString)
+        val logger = FileLogger(rotate = TEST_ROTATE_AFTER_5, logPath = testLogPathString).apply { clock = TEST_CLOCK }
 
         // Act
         logger.testMessages()
@@ -97,7 +98,7 @@ class FileLoggerTest {
     @Test
     fun log_rotate_daily() {
         // Arrange
-        val logger = FileLogger(rotate = Rotate.Daily, logPath = testLogPathString)
+        val logger = FileLogger(rotate = Rotate.Daily, logPath = testLogPathString).apply { clock = TEST_CLOCK }
 
         // Act
         logger.testMessages()
@@ -116,7 +117,7 @@ class FileLoggerTest {
     @Test
     fun log_rotate_never() {
         // Arrange
-        val logger = FileLogger(rotate = Rotate.Never, logPath = testLogPathString)
+        val logger = FileLogger(rotate = Rotate.Never, logPath = testLogPathString).apply { clock = TEST_CLOCK }
 
         // Act
         logger.testMessages()
@@ -139,7 +140,7 @@ class FileLoggerTest {
     fun log_limit_not() {
         // Arrange
         val rotate = Rotate.After(7)
-        val logger = FileLogger(rotate, Limit.Not, testLogPathString)
+        val logger = FileLogger(rotate, Limit.Not, testLogPathString).apply { clock = TEST_CLOCK }
 
         // Act
         logger.testMessages()
@@ -156,7 +157,7 @@ class FileLoggerTest {
     fun log_limit_to_7_files() {
         // Arrange
         val rotate = Rotate.After(3)
-        val logger = FileLogger(rotate, Limit.Files(7), testLogPathString)
+        val logger = FileLogger(rotate, Limit.Files(7), testLogPathString).apply { clock = TEST_CLOCK }
 
         // Act
         logger.testMessages()
@@ -171,7 +172,7 @@ class FileLoggerTest {
     fun log_limit_to_4_files() {
         // Arrange
         val rotate = Rotate.After(5)
-        val logger = FileLogger(rotate, Limit.Files(4), testLogPathString)
+        val logger = FileLogger(rotate, Limit.Files(4), testLogPathString).apply { clock = TEST_CLOCK }
 
         // Act
         logger.testMessages()
@@ -200,36 +201,39 @@ class FileLoggerTest {
     }
 
     companion object {
+        private val TEST_CLOCK = object : Clock {
+            override fun now() = Instant.fromEpochSeconds(1000)
+        }
         private val TEST_ROTATE_AFTER_5 = Rotate.After(lines = 5)
         private val TEST_ROTATE_AFTER_9 = Rotate.After(lines = 9)
         private val TEST_ROTATE_AFTER_5_LOG_CONTENT = """
-            E/$expectedTraceTag: Error message
-            A/TAG1: Assert message
-            A/TAG2: Assert message
-            A/$expectedTraceTag: Assert message
+            1970-01-01T00:16:40Z E/$expectedTraceTag: Error message
+            1970-01-01T00:16:40Z A/TAG1: Assert message
+            1970-01-01T00:16:40Z A/TAG2: Assert message
+            1970-01-01T00:16:40Z A/$expectedTraceTag: Assert message
         """.trimIndent()
         private val TEST_ROTATE_AFTER_9_LOG_CONTENT = """
-            E/TAG2: Error message
-            E/$expectedTraceTag: Error message
-            A/TAG1: Assert message
-            A/TAG2: Assert message
-            A/$expectedTraceTag: Assert message
+            1970-01-01T00:16:40Z E/TAG2: Error message
+            1970-01-01T00:16:40Z E/$expectedTraceTag: Error message
+            1970-01-01T00:16:40Z A/TAG1: Assert message
+            1970-01-01T00:16:40Z A/TAG2: Assert message
+            1970-01-01T00:16:40Z A/$expectedTraceTag: Assert message
         """.trimIndent()
         private val TEST_ROTATE_DAILY_LOG_CONTENT = """
-            V/TAG1: Verbose message
-            V/TAG2: Verbose message
-            V/TAG3: Verbose message
-            D/TAG1: Debug message ${expectedExceptionPackage}Exception: Test exception!
-            D/TAG2: Debug message ${expectedExceptionPackage}Exception: Test exception!
-            D/TAG3: Debug message ${expectedExceptionPackage}Exception: Test exception!
-            I/TAG2: Info message
-            W/TAG3: Warning message ${expectedExceptionPackage}IllegalStateException: Illegal test state!
-            E/TAG1: Error message
-            E/TAG2: Error message
-            E/$expectedTraceTag: Error message
-            A/TAG1: Assert message
-            A/TAG2: Assert message
-            A/$expectedTraceTag: Assert message
+            1970-01-01T00:16:40Z V/TAG1: Verbose message
+            1970-01-01T00:16:40Z V/TAG2: Verbose message
+            1970-01-01T00:16:40Z V/TAG3: Verbose message
+            1970-01-01T00:16:40Z D/TAG1: Debug message ${expectedExceptionPackage}Exception: Test exception!
+            1970-01-01T00:16:40Z D/TAG2: Debug message ${expectedExceptionPackage}Exception: Test exception!
+            1970-01-01T00:16:40Z D/TAG3: Debug message ${expectedExceptionPackage}Exception: Test exception!
+            1970-01-01T00:16:40Z I/TAG2: Info message
+            1970-01-01T00:16:40Z W/TAG3: Warning message ${expectedExceptionPackage}IllegalStateException: Illegal test state!
+            1970-01-01T00:16:40Z E/TAG1: Error message
+            1970-01-01T00:16:40Z E/TAG2: Error message
+            1970-01-01T00:16:40Z E/$expectedTraceTag: Error message
+            1970-01-01T00:16:40Z A/TAG1: Assert message
+            1970-01-01T00:16:40Z A/TAG2: Assert message
+            1970-01-01T00:16:40Z A/$expectedTraceTag: Assert message
         """.trimIndent()
     }
 }
