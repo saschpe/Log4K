@@ -38,7 +38,7 @@ android {
 }
 
 mavenPublishing {
-    publishToMavenCentral()
+    publishToMavenCentral(automaticRelease = true)
     signAllPublications()
 
     coordinates("de.peilicke.sascha", name, version.toString())
