@@ -7,14 +7,14 @@ gradle-android = "8.12.3"
 jacoco = "0.8.13"
 java = "21"
 kotlin = "2.2.20"
-ktlint = "1.6.0"
+ktlint = "1.7.1"
 log4k-demo = "1.0.0"
 mockk = "1.14.5"
 slf4j = "2.0.17"
 
 [libraries]
 androidx-activity-compose = "androidx.activity:activity-compose:1.11.0"
-kotlin-wrappers = "org.jetbrains.kotlin-wrappers:kotlin-node:2025.9.8-24.3.1"
+kotlin-wrappers = "org.jetbrains.kotlin-wrappers:kotlin-node:2025.9.9-24.3.1"
 kotlinx-datetime = "org.jetbrains.kotlinx:kotlinx-datetime:0.7.1"
 kotlinx-io = "org.jetbrains.kotlinx:kotlinx-io-core:0.8.0"
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
@@ -32,5 +32,5 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kover = "org.jetbrains.kotlinx.kover:0.9.2"
 maven-publish = "com.vanniktech.maven.publish:0.34.0"
-spotless = "com.diffplug.spotless:7.2.1"
-versions = "com.github.ben-manes.versions:0.52.0"
+spotless = "com.diffplug.spotless:8.0.0"
+versions = "com.github.ben-manes.versions:0.53.0"
