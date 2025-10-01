@@ -135,6 +135,27 @@ class FileLoggerTest {
         assertEquals(1, filesInFolder(testLogPathString))
     }
 
+    @Test
+    fun log_rotate_never_no_timestamps() {
+        // Arrange
+        val logger = FileLogger(rotate = Rotate.Never, logPath = testLogPathString).apply { clock = null }
+
+        // Act
+        logger.testMessages()
+
+        // Assert
+        val logFile = Rotate.Never.logFile(testLogPath)
+
+        assertTrue { fileSystem.metadataOrNull(testLogPath)?.isDirectory ?: false }
+        assertTrue { fileSystem.exists(logFile) }
+        assertTrue { fileSystem.metadataOrNull(logFile)?.isRegularFile ?: false }
+        assertEquals(
+            "$TEST_ROTATE_DAILY_LOG_CONTENT_NO_TIMESTAMPS\n",
+            fileSystem.source(logFile).buffered().readString(),
+        )
+        assertEquals(1, filesInFolder(testLogPathString))
+    }
+
     @Ignore // The class works, but testing async I/O is hard across all platforms
     @Test
     fun log_limit_not() {
@@ -234,6 +255,22 @@ class FileLoggerTest {
             1970-01-01T00:16:40Z A/TAG1: Assert message
             1970-01-01T00:16:40Z A/TAG2: Assert message
             1970-01-01T00:16:40Z A/$expectedTraceTag: Assert message
+        """.trimIndent()
+        private val TEST_ROTATE_DAILY_LOG_CONTENT_NO_TIMESTAMPS = """
+            V/TAG1: Verbose message
+            V/TAG2: Verbose message
+            V/TAG3: Verbose message
+            D/TAG1: Debug message ${expectedExceptionPackage}Exception: Test exception!
+            D/TAG2: Debug message ${expectedExceptionPackage}Exception: Test exception!
+            D/TAG3: Debug message ${expectedExceptionPackage}Exception: Test exception!
+            I/TAG2: Info message
+            W/TAG3: Warning message ${expectedExceptionPackage}IllegalStateException: Illegal test state!
+            E/TAG1: Error message
+            E/TAG2: Error message
+            E/$expectedTraceTag: Error message
+            A/TAG1: Assert message
+            A/TAG2: Assert message
+            A/$expectedTraceTag: Assert message
         """.trimIndent()
     }
 }

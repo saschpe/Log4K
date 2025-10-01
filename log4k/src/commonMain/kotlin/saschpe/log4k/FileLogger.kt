@@ -1,4 +1,3 @@
-
 package saschpe.log4k
 
 import kotlinx.datetime.LocalDate
@@ -29,7 +28,16 @@ class FileLogger(
     private val limit: Limit = Limit.Files(10),
     private val logPath: String? = null,
 ) : Logger() {
-    var clock: Clock = Clock.System // TODO: Pass clock as constructor parameter once @ExperimentalTime is gone
+    /**
+     * Represents an optional clock used for timestamping log entries.
+     *
+     * When provided, the current timestamp from this clock is prepended to each log message.
+     * Defaults to `Clock.System`, but can be modified to use a custom or test clock when needed.
+     *
+     * This property is intended to be passed as a constructor parameter in the future,
+     * once the `@ExperimentalTime` annotation is removed.
+     */
+    var clock: Clock? = Clock.System // TODO: Pass clock as constructor parameter once @ExperimentalTime is gone
     private val logPathInternal = logPath?.let { Path(it) } ?: defaultLogPath
 
     init {
@@ -39,7 +47,7 @@ class FileLogger(
     override fun print(level: Log.Level, tag: String, message: String?, throwable: Throwable?) {
         val logTag = tag.ifEmpty { getTraceTag() }
         SystemFileSystem.sink(rotate.logFile(logPathInternal), append = true).buffered().use { sink ->
-            sink.writeString("${clock.now()} ${level.name.first()}/$logTag: $message")
+            sink.writeString("${clock?.let { "${it.now()} " } ?: ""}${level.name.first()}/$logTag: $message")
             throwable?.let { sink.writeString(" $throwable") }
             sink.writeString("\n")
             rotate.lineWritten()
