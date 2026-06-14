@@ -10,7 +10,7 @@ kotlin = "2.4.0"
 ktlint = "1.7.1"
 log4k-demo = "1.0.0"
 mockk = "1.14.11"
-slf4j = "2.0.17"
+slf4j = "2.0.18"
 
 [libraries]
 androidx-activity-compose = "androidx.activity:activity-compose:1.11.0"
