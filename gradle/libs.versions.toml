@@ -1,6 +1,6 @@
 [versions]
 android-compileSdk = "36"
-android-minSdk = "21"
+android-minSdk = "23"
 android-targetSdk = "36"
 compose = "1.9.0"
 gradle-android = "8.13.2"
@@ -13,10 +13,10 @@ mockk = "1.14.11"
 slf4j = "2.0.18"
 
 [libraries]
-androidx-activity-compose = "androidx.activity:activity-compose:1.11.0"
-kotlin-wrappers = "org.jetbrains.kotlin-wrappers:kotlin-node:2025.9.9-24.3.1"
+androidx-activity-compose = "androidx.activity:activity-compose:1.13.0"
+kotlin-wrappers = "org.jetbrains.kotlin-wrappers:kotlin-node:2026.6.3-24.12.4"
 kotlinx-datetime = "org.jetbrains.kotlinx:kotlinx-datetime:0.8.0"
-kotlinx-io = "org.jetbrains.kotlinx:kotlinx-io-core:0.8.0"
+kotlinx-io = "org.jetbrains.kotlinx:kotlinx-io-core:0.9.0"
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
