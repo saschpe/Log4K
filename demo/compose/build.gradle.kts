@@ -25,21 +25,22 @@ kotlin {
 
     sourceSets {
         androidMain.dependencies {
-            implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.compose.ui.tooling.preview)
         }
         commonMain.dependencies {
             implementation(project(":log4k"))
             implementation(project(":log4k-slf4j"))
-            implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
-            implementation(compose.foundation)
-            implementation(compose.material)
-            implementation(compose.runtime)
-            implementation(compose.ui)
+            implementation(libs.compose.components.resources)
+            implementation(libs.compose.components.ui.tooling.preview)
+            implementation(libs.compose.foundation)
+            implementation(libs.compose.material)
+            implementation(libs.compose.runtime)
+            implementation(libs.compose.ui)
         }
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
+            implementation(libs.compose.ui.tooling.preview)
             implementation(libs.slf4j.simple)
         }
     }
