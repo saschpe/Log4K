@@ -21,7 +21,7 @@ compose-material = { module = "org.jetbrains.compose.material:material", version
 compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "compose" }
 compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "compose" }
 compose-ui-tooling-preview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "compose" }
-kotlin-wrappers = "org.jetbrains.kotlin-wrappers:kotlin-node:2026.7.4-24.12.4"
+kotlin-wrappers = "org.jetbrains.kotlin-wrappers:kotlin-node:2026.7.5-24.12.4"
 kotlinx-datetime = "org.jetbrains.kotlinx:kotlinx-datetime:0.8.0"
 kotlinx-io = "org.jetbrains.kotlinx:kotlinx-io-core:0.9.1"
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
