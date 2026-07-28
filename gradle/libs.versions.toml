@@ -38,4 +38,4 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 maven-publish = "com.vanniktech.maven.publish:0.37.0"
 spotless = "com.diffplug.spotless:8.8.0"
-versions = "com.github.ben-manes.versions:0.54.0"
+versions = "com.github.ben-manes.versions:0.56.0"
