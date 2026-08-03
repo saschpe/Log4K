@@ -29,6 +29,7 @@ dependencyResolutionManagement {
 rootProject.name = "Log4K"
 
 include(":demo:compose")
+include(":demo:androidApp")
 include(":demo:desktopApp")
 include(":log4k")
 include(":log4k-slf4j")
