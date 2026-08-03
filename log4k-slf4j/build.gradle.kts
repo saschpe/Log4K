@@ -12,7 +12,6 @@ kotlin {
         namespace = "saschpe.log4k.slf4j"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
-        testCoverage.jacocoVersion = libs.versions.jacoco.get()
         withHostTest { isIncludeAndroidResources = true }
     }
     iosArm64()
