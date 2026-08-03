@@ -1,6 +1,6 @@
 plugins {
-    alias(libs.plugins.android.library)
     alias(libs.plugins.dokka)
+    alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.maven.publish)
 }
@@ -8,7 +8,13 @@ plugins {
 kotlin {
     jvmToolchain(libs.versions.java.get().toInt())
 
-    androidTarget { publishLibraryVariants("debug", "release") }
+    android {
+        namespace = "saschpe.log4k"
+        compileSdk = libs.versions.android.compileSdk.get().toInt()
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        testCoverage.jacocoVersion = libs.versions.jacoco.get()
+        withHostTest { isIncludeAndroidResources = true }
+    }
     iosArm64()
     iosSimulatorArm64()
     iosX64()
@@ -35,22 +41,12 @@ kotlin {
         jvmTest.dependencies {
             implementation(libs.mockk)
         }
-        androidUnitTest.dependencies {
+        named("androidHostTest").dependencies {
             implementation(libs.mockk.android)
         }
     }
 }
 
-android {
-    namespace = "saschpe.log4k"
-
-    defaultConfig {
-        compileSdk = libs.versions.android.compileSdk.get().toInt()
-        minSdk = libs.versions.android.minSdk.get().toInt()
-    }
-
-    testCoverage.jacocoVersion = libs.versions.jacoco.get()
-}
 
 mavenPublishing {
     publishToMavenCentral(automaticRelease = true)
