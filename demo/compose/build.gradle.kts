@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.compose)
-    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.compose.hotReload)
+    alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.kotlin.multiplatform)
 }
 
@@ -39,9 +40,7 @@ kotlin {
             implementation(libs.compose.ui)
         }
         jvmMain.dependencies {
-            implementation(compose.desktop.currentOs)
             implementation(libs.compose.ui.tooling.preview)
-            implementation(libs.slf4j.simple)
         }
     }
 }
@@ -67,20 +66,5 @@ android {
     }
     dependencies {
         debugImplementation(compose.uiTooling)
-    }
-}
-
-compose.desktop {
-    application {
-        mainClass = "MainKt"
-        nativeDistributions {
-            targetFormats(
-                org.jetbrains.compose.desktop.application.dsl.TargetFormat.Deb,
-                org.jetbrains.compose.desktop.application.dsl.TargetFormat.Dmg,
-                org.jetbrains.compose.desktop.application.dsl.TargetFormat.Msi,
-            )
-            packageName = "saschpe.log4k.demo"
-            packageVersion = libs.versions.log4k.demo.get()
-        }
     }
 }
