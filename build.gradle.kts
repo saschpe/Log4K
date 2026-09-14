@@ -11,6 +11,16 @@ spotless {
     freshmark {
         target("**/*.md")
         propertiesFile("gradle.properties")
+        replaceRegex(
+            "Log4K dependency version",
+            "de\\.peilicke\\.sascha:log4k:[^\"\\s)]+",
+            "de.peilicke.sascha:log4k:${project.version}",
+        )
+        replaceRegex(
+            "Kotlin version badge",
+            "https://img\\.shields\\.io/badge/Kotlin-v[^?]+",
+            "https://img.shields.io/badge/Kotlin-v${libs.versions.kotlin.get()}-purple",
+        )
     }
     kotlin {
         target("**/*.kt")
