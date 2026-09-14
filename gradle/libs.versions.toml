@@ -1,15 +1,15 @@
 [versions]
-agp = "9.1.1"
+agp = "9.3.2"
 android-compileSdk = "37"
 android-minSdk = "23"
 android-targetSdk = "37"
-compose = "1.11.1"
+compose = "1.12.0"
 java = "21"
-kotlin = "2.4.10"
+kotlin = "2.4.20"
 ktlint = "1.8.0"
 log4k-demo = "1.0.0"
 mockk = "1.14.11"
-slf4j = "2.0.18"
+slf4j = "2.0.19"
 
 [libraries]
 androidx-activity-compose = "androidx.activity:activity-compose:1.13.0"
@@ -21,7 +21,7 @@ compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.re
 compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "compose" }
 compose-ui-tooling = { module = "org.jetbrains.compose.ui:ui-tooling", version.ref = "compose" }
 compose-ui-tooling-preview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "compose" }
-kotlin-wrappers = "org.jetbrains.kotlin-wrappers:kotlin-node:2026.8.0-24.12.4"
+kotlin-wrappers = "org.jetbrains.kotlin-wrappers:kotlin-node:2026.9.1-24.12.4"
 kotlinx-datetime = "org.jetbrains.kotlinx:kotlinx-datetime:0.8.0"
 kotlinx-io = "org.jetbrains.kotlinx:kotlinx-io-core:0.9.1"
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
@@ -39,5 +39,5 @@ dokka = "org.jetbrains.dokka:2.2.0"
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 maven-publish = "com.vanniktech.maven.publish:0.37.0"
-spotless = "com.diffplug.spotless:8.9.0"
-versions = "io.github.ben-manes.versions:0.59.0"
+spotless = "com.diffplug.spotless:8.10.2"
+versions = "io.github.ben-manes.versions:0.62.0"
