@@ -23,7 +23,7 @@ compose-ui-tooling = { module = "org.jetbrains.compose.ui:ui-tooling", version.r
 compose-ui-tooling-preview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "compose" }
 kotlin-wrappers = "org.jetbrains.kotlin-wrappers:kotlin-node:2026.9.1-24.12.4"
 kotlinx-datetime = "org.jetbrains.kotlinx:kotlinx-datetime:0.8.0"
-kotlinx-io = "org.jetbrains.kotlinx:kotlinx-io-core:0.9.1"
+kotlinx-io = "org.jetbrains.kotlinx:kotlinx-io-core:0.9.2"
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
